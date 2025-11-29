@@ -1,101 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Header Tooltip with Brevo Form</title>
-<style>
-  /* Header styling */
-  body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin-top: 100px;
-  }
-
-  h1 {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    color: #333;
-  }
-
-  /* Tooltip box */
-  .tooltip {
-    visibility: hidden;
-    width: 250px;
-    background-color: #fff;
-    color: #000;
-    text-align: center;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
-
-    /* Positioning */
-    position: absolute;
-    top: 110%; /* below the header */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-
-    /* Fade-in effect */
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  /* Show tooltip on hover */
-  h1:hover .tooltip {
-    visibility: visible;
-    opacity: 1;
-  }
-
-  /* Optional arrow below the tooltip */
-  .tooltip::after {
-    content: "";
-    position: absolute;
-    top: -5px;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent #ccc transparent;
-  }
-
-  /* Style for the Brevo form inside tooltip */
-  .brevo-form input[type="email"] {
-    width: 90%;
-    padding: 5px;
-    margin: 8px 0;
-    border-radius: 4px;
-    border: 1px solid #aaa;
-  }
-
-  .brevo-form button {
-    padding: 6px 12px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-  }
-
-  .brevo-form button:hover {
-    background-color: #0056b3;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anna Colliton</title>
+    
+    <!-- Adobe Font - tomarik-brush -->
+    <link rel="stylesheet" href="https://use.typekit.net/ger2jgy.css">
+    
+    <!-- Backup Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .main-container {
+            min-height: 100vh;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-image: url('Plain BG.jpg');
+        }
+        
+        /* Overlay layer for changing backgrounds */
+        .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            /* BACKGROUND IMAGES TEMPORARILY DISABLED - TO RE-ENABLE: uncomment the sections below */
+        }
+        
+        /* Background states - CURRENTLY DISABLED */
+        /* TO RE-ENABLE: Remove the comment markers below (the slashes and asterisks) */
+        /*
+        .main-container.show-art .background-overlay {
+            background-image: url('Art BG.jpg');
+            opacity: 1;
+        }
+        
+        .main-container.show-music .background-overlay {
+            background-image: url('Music BG.jpg');
+            opacity: 1;
+        }
+        
+        .main-container.show-shop .background-overlay {
+            background-image: url('Shop BG.jpg');
+            opacity: 1;
+        }
+        */
+        
+        /* Dark overlay for better text readability */
+        .main-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Content overlay */
+        .content-overlay {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            padding-bottom: 12%;
+        }
+        
+        .main-title {
+            font-family: "tomarik-brush", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: clamp(3.5rem, 10vw, 7rem);
+            color: #ffffff;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 50px;
+            line-height: 1.1;
+        }
+        
+        .buttons-container {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            pointer-events: auto;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .button-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 80px;
+            justify-content: flex-end;
+        }
+        
+        .shop-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0px;
+            padding: 15px 30px;
+        }
+        
+        .shop-label {
+            font-family: "tomarik-brush", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: clamp(1.8rem, 4.5vw, 3rem);
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            opacity: 1;
+            white-space: nowrap;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+        
+        .shop-button {
+            font-family: "tomarik-brush", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: clamp(1.8rem, 4.5vw, 3rem);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0;
+            border: none;
+            background: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            letter-spacing: 2px;
+            display: block;
+            cursor: pointer;
+        }
+        
+        .choice-button {
+            font-family: "tomarik-brush", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: clamp(1.8rem, 4.5vw, 3rem);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 15px 30px;
+            border: none;
+            background: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            letter-spacing: 2px;
+            display: block;
+            cursor: pointer;
+        }
+        
+        .choice-button:hover {
+            transform: translateY(-3px);
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+            color: #d4af37;
+        }
+        
+        .or-text {
+            font-family: "tomarik-brush", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: clamp(1rem, 2.5vw, 1.6rem);
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin: 0 10px;
+            opacity: 1;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            margin-top: -5px;
+            padding: 10px 15px;
+            padding-top: 15px;
+            border-radius: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-15px);
+            transition: all 0.4s ease;
+            min-width: 200px;
+            text-align: center;
+        }
+        
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background: transparent;
+        }
+        
+        .button-wrapper:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu a {
+            font-family: "tomarik-brush", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: clamp(0.85rem, 1.8vw, 1.1rem);
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+            padding: 5px 0;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .dropdown-menu a:hover {
+            color: #d4af37;
+            transform: translateX(5px);
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .buttons-container {
+                gap: 20px;
+                flex-direction: column;
+            }
+            
+            .choice-button {
+                padding: 12px 25px;
+            }
+            
+            .or-text {
+                margin: 0 10px;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                margin-top: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-
-<h1>
-  Join My Mailing List
-  <span class="tooltip">
-    <form class="brevo-form" action="https://YOUR-BREVO-FORM-ENDPOINT" method="post" target="_blank">
-      <label for="email">Enter your email:</label><br>
-      <input type="email" id="email" name="EMAIL" placeholder="you@example.com" required><br>
-      <button type="submit">Subscribe</button>
-    </form>
-  </span>
-</h1>
-
+    <div class="main-container" id="mainContainer">
+        <!-- Overlay layer for background switching -->
+        <div class="background-overlay" id="bgOverlay"></div>
+        
+        <!-- Centered content overlay -->
+        <div class="content-overlay">
+            <h1 class="main-title">ANNA COLLITON</h1>
+            
+            <div class="buttons-container">
+                <!-- ART button with dropdown -->
+                <div class="button-wrapper" data-bg="art">
+                    <a href="https://annacollitonvisuals.com/homeandshop" class="choice-button" target="_blank">art</a>
+                    <div class="dropdown-menu">
+                        <a href="https://annacollitonvisuals.com/logos-merch" target="_blank">Logos + merch</a>
+                        <a href="https://annacollitonvisuals.com/albums" target="_blank">Albums design</a>
+                        <a href="https://annacollitonvisuals.com/photography" target="_blank">Photography</a>
+                    </div>
+                </div>
+                
+                <!-- OR text -->
+                <span class="or-text">or</span>
+                
+                <!-- MUSIC button with dropdown -->
+                <div class="button-wrapper" data-bg="music">
+                    <a href="https://annacollitonmusic.com/" class="choice-button" target="_blank">music</a>
+                    <div class="dropdown-menu">
+                        <a href="https://annacollitonmusic.com/gigs" target="_blank">Gigs/tours</a>
+                        <a href="https://annacollitonmusic.com/workshops" target="_blank">Workshops/teaching</a>
+                        <a href="https://annacollitonmusic.com/resources" target="_blank">Student resources</a>
+                        <a href="https://annacollitonmusic.com/projects" target="_blank">Projects</a>
+                        <a href="https://annacollitonmusic.com/epk" target="_blank">EPK</a>
+                    </div>
+                </div>
+                
+                <!-- OR text -->
+                <span class="or-text">or</span>
+                
+                <!-- SHOP button (no dropdown) -->
+                <div class="button-wrapper" data-bg="shop">
+                    <a href="https://annacollitonvisuals.com/shop" class="choice-button" target="_blank">shop!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Background switching on hover
+        const mainContainer = document.getElementById('mainContainer');
+        const buttonWrappers = document.querySelectorAll('.button-wrapper');
+        
+        buttonWrappers.forEach(wrapper => {
+            wrapper.addEventListener('mouseenter', function() {
+                const bg = this.getAttribute('data-bg');
+                mainContainer.className = 'main-container show-' + bg;
+            });
+            
+            wrapper.addEventListener('mouseleave', function() {
+                mainContainer.className = 'main-container';
+            });
+        });
+    </script>
+    
+    <!-- ADD YOUR POPUP SIGNUP FORM CODE HERE -->
+    
 </body>
 </html>
