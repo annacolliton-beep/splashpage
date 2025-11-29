@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/tomarik-brush.css">
     <style>
         * {
             margin: 0;
@@ -38,7 +39,7 @@
         }
 
         h1 {
-            font-family: 'tomarik-brush', 'Montserrat', sans-serif;
+            font-family: "tomarik-brush", "Montserrat", sans-serif;
             font-size: 5rem;
             font-weight: normal;
             margin-bottom: 2rem;
@@ -47,16 +48,18 @@
 
         .buttons {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            flex-direction: row;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
             width: 100%;
-            max-width: 300px;
+            max-width: 600px;
             margin: 0 auto;
         }
 
         .btn {
             position: relative;
-            padding: 15px 20px;
+            padding: 15px 30px;
             font-size: 1.5rem;
             font-weight: 600;
             color: #ffffff;
@@ -67,7 +70,7 @@
             transition: all 0.3s ease;
             text-decoration: none;
             display: block;
-            width: 100%;
+            white-space: nowrap;
         }
 
         .btn:hover {
@@ -78,18 +81,19 @@
         .dropdown {
             position: relative;
             display: inline-block;
-            width: 100%;
         }
 
         .dropdown-content {
             display: none;
             position: absolute;
             background-color: rgba(0, 0, 0, 0.7);
-            min-width: 100%;
+            min-width: 200px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
             border-radius: 0 0 5px 5px;
             overflow: hidden;
+            top: 100%;
+            left: 0;
         }
 
         .dropdown-content a {
@@ -98,6 +102,7 @@
             text-decoration: none;
             display: block;
             transition: color 0.3s ease;
+            text-align: left;
         }
 
         .dropdown-content a:hover {
@@ -111,7 +116,6 @@
         /* Shop button stars container */
         .shop-btn-container {
             position: relative;
-            width: 100%;
         }
 
         /* Stars styling */
@@ -163,9 +167,15 @@
                 font-size: 3.5rem;
             }
             
+            .buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
             .btn {
                 font-size: 1.2rem;
-                padding: 12px 15px;
+                padding: 12px 25px;
+                width: 200px;
             }
 
             .star-small { width: 15px; height: 15px; }
@@ -187,7 +197,8 @@
             
             .btn {
                 font-size: 1rem;
-                padding: 10px 12px;
+                padding: 10px 20px;
+                width: 180px;
             }
 
             .star-small { width: 12px; height: 12px; }
@@ -246,14 +257,5 @@
             </div>
         </div>
     </div>
-
-    <!-- Load the custom font -->
-    <script>
-        // Load the custom font
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = 'https://use.typekit.net/tomarik-brush.css';
-        document.head.appendChild(link);
-    </script>
 </body>
 </html>
