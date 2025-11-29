@@ -71,7 +71,7 @@
         }
 
         .btn:hover {
-            color: #f5e8c8; /* Much lighter, more neutral gold */
+            color: #f5e8c8;
             border-color: #f5e8c8;
         }
 
@@ -101,7 +101,11 @@
         }
 
         .dropdown-content a:hover {
-            color: #f5e8c8; /* Much lighter, more neutral gold */
+            color: #f5e8c8;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
 
         /* Shop button stars container */
@@ -113,12 +117,13 @@
         /* Stars styling */
         .star {
             position: absolute;
-            background-image: url('Star - Hover.jpg');
+            background-image: url('Star - Hover.png');
             background-size: contain;
             background-repeat: no-repeat;
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: 1;
+            pointer-events: none;
         }
 
         /* Different star sizes */
@@ -153,21 +158,6 @@
             opacity: 1;
         }
 
-        /* Background hover effects - currently disabled */
-        /*
-        .art-btn:hover ~ body {
-            background-image: url('Art BG.jpg');
-        }
-        
-        .music-btn:hover ~ body {
-            background-image: url('Music BG.jpg');
-        }
-        
-        .shop-btn:hover ~ body {
-            background-image: url('Shop BG.jpg');
-        }
-        */
-
         @media (max-width: 768px) {
             h1 {
                 font-size: 3.5rem;
@@ -178,12 +168,10 @@
                 padding: 12px 15px;
             }
 
-            /* Adjust star sizes for mobile */
             .star-small { width: 15px; height: 15px; }
             .star-medium { width: 22px; height: 22px; }
             .star-large { width: 28px; height: 28px; }
 
-            /* Adjust star positions for mobile */
             .star-1 { top: -20px; left: 15px; }
             .star-2 { top: -12px; right: 20px; }
             .star-3 { bottom: -15px; left: 10px; }
@@ -202,12 +190,10 @@
                 padding: 10px 12px;
             }
 
-            /* Further adjust star sizes for small mobile */
             .star-small { width: 12px; height: 12px; }
             .star-medium { width: 18px; height: 18px; }
             .star-large { width: 24px; height: 24px; }
 
-            /* Further adjust star positions for small mobile */
             .star-1 { top: -15px; left: 10px; }
             .star-2 { top: -10px; right: 15px; }
             .star-3 { bottom: -12px; left: 8px; }
@@ -225,9 +211,9 @@
             <div class="dropdown">
                 <a href="https://annacollitonvisuals.com/homeandshop" class="btn art-btn">art</a>
                 <div class="dropdown-content">
-                    <a href="#">Logos + merch</a>
-                    <a href="#">Albums design</a>
-                    <a href="#">Photography</a>
+                    <a href="https://annacollitonvisuals.com/homeandshop">Logos + merch</a>
+                    <a href="https://annacollitonvisuals.com/homeandshop">Albums design</a>
+                    <a href="https://annacollitonvisuals.com/homeandshop">Photography</a>
                 </div>
             </div>
             
@@ -235,11 +221,11 @@
             <div class="dropdown">
                 <a href="https://annacollitonmusic.com/" class="btn music-btn">music</a>
                 <div class="dropdown-content">
-                    <a href="#">Gigs/tours</a>
-                    <a href="#">Workshops/teaching</a>
-                    <a href="#">Student resources</a>
-                    <a href="#">Projects</a>
-                    <a href="#">EPK</a>
+                    <a href="https://annacollitonmusic.com/">Gigs/tours</a>
+                    <a href="https://annacollitonmusic.com/">Workshops/teaching</a>
+                    <a href="https://annacollitonmusic.com/">Student resources</a>
+                    <a href="https://annacollitonmusic.com/">Projects</a>
+                    <a href="https://annacollitonmusic.com/">EPK</a>
                 </div>
             </div>
             
