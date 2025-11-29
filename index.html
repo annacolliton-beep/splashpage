@@ -4,251 +4,328 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anna Colliton</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Adobe Font - tomarik-brush -->
+    <link rel="stylesheet" href="https://use.typekit.net/ger2jgy.css">
+    
+    <!-- Backup Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: "Montserrat", sans-serif;
-            background-image: url('Plain BG.jpg');
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .main-container {
+            min-height: 100vh;
+            position: relative;
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: #ffffff;
-            text-align: center;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .container {
-            z-index: 2;
-            max-width: 800px;
-            padding: 20px;
-        }
-
-        h1 {
-            font-family: 'tomarik-brush', 'Montserrat', sans-serif;
-            font-size: 5rem;
-            font-weight: normal;
-            margin-bottom: 2rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            width: 100%;
-            max-width: 300px;
-            margin: 0 auto;
-        }
-
-        .btn {
-            position: relative;
-            padding: 15px 20px;
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: #ffffff;
-            background-color: transparent;
-            border: 2px solid #ffffff;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: block;
-            width: 100%;
-            font-family: 'tomarik-brush', 'Montserrat', sans-serif;
-        }
-
-        .btn:hover {
-            color: #d4af37;
-            border-color: #d4af37;
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: rgba(0, 0, 0, 0.7);
-            min-width: 100%;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-            border-radius: 0 0 5px 5px;
-            overflow: hidden;
-        }
-
-        .dropdown-content a {
-            color: #ffffff;
-            padding: 10px 16px;
-            text-decoration: none;
-            display: block;
-            transition: color 0.3s ease;
-            font-family: 'tomarik-brush', 'Montserrat', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 400;
-        }
-
-        .dropdown-content a:hover {
-            color: #d4af37;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        /* Background hover effects - currently disabled */
-        /*
-        .art-btn:hover ~ body {
-            background-image: url('Art BG.jpg');
+            background-image: url('Plain BG.jpg');
         }
         
-        .music-btn:hover ~ body {
-            background-image: url('Music BG.jpg');
-        }
-        
-        .shop-btn:hover ~ body {
-            background-image: url('Shop BG.jpg');
-        }
-        */
-
-        /* STAR CODE ADDED BELOW - NOTHING ELSE CHANGED */
-        .shop-btn-container {
-            position: relative;
-            width: 100%;
-        }
-
-        .star {
+        /* Overlay layer for changing backgrounds */
+        .background-overlay {
             position: absolute;
-            background-image: url('Star - Hover.png');
-            background-size: contain;
-            background-repeat: no-repeat;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
             opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1;
-            pointer-events: none;
+            transition: opacity 0.5s ease;
+            /* BACKGROUND IMAGES TEMPORARILY DISABLED - TO RE-ENABLE: uncomment the sections below */
         }
-
-        .star-small { width: 20px; height: 20px; }
-        .star-medium { width: 30px; height: 30px; }
-        .star-large { width: 40px; height: 40px; }
-
-        .rotate-15 { transform: rotate(15deg); }
-        .rotate-30 { transform: rotate(30deg); }
-        .rotate-45 { transform: rotate(45deg); }
-
-        .star-1 { top: -45px; left: 25px; }
-        .star-2 { top: -35px; right: 35px; }
-        .star-3 { bottom: -40px; left: 20px; }
-        .star-4 { bottom: -50px; right: 30px; }
-        .star-5 { top: 50%; transform: translateY(-50%); left: -45px; }
-        .star-6 { top: 50%; transform: translateY(-50%); right: -45px; }
-        .star-7 { top: -30px; left: 50%; transform: translateX(-50%); }
-        .star-8 { bottom: -35px; left: 50%; transform: translateX(-50%); }
-        .star-9 { top: 50%; left: 50%; transform: translate(-50%, -50%); }
-
-        .shop-btn-container:hover .star {
+        
+        /* Background states - CURRENTLY DISABLED */
+        /* TO RE-ENABLE: Remove the comment markers below (the slashes and asterisks) */
+        /*
+        .main-container.show-art .background-overlay {
+            background-image: url('Art BG.jpg');
             opacity: 1;
         }
-        /* END OF STAR CODE */
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 3.5rem;
-            }
-            
-            .btn {
-                font-size: 1.2rem;
-                padding: 12px 15px;
-            }
-            
-            .dropdown-content a {
-                font-size: 1rem;
-            }
+        
+        .main-container.show-music .background-overlay {
+            background-image: url('Music BG.jpg');
+            opacity: 1;
         }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2.5rem;
+        
+        .main-container.show-shop .background-overlay {
+            background-image: url('Shop BG.jpg');
+            opacity: 1;
+        }
+        */
+        
+        /* Dark overlay for better text readability */
+        .main-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Content overlay */
+        .content-overlay {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            padding-bottom: 12%;
+        }
+        
+        .main-title {
+            font-family: "tomarik-brush", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: clamp(3.5rem, 10vw, 7rem);
+            color: #ffffff;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 50px;
+            line-height: 1.1;
+        }
+        
+        .buttons-container {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            pointer-events: auto;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .button-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 80px;
+            justify-content: flex-end;
+        }
+        
+        .shop-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0px;
+            padding: 15px 30px;
+        }
+        
+        .shop-label {
+            font-family: "tomarik-brush", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: clamp(1.8rem, 4.5vw, 3rem);
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            opacity: 1;
+            white-space: nowrap;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+        
+        .shop-button {
+            font-family: "tomarik-brush", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: clamp(1.8rem, 4.5vw, 3rem);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0;
+            border: none;
+            background: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            letter-spacing: 2px;
+            display: block;
+            cursor: pointer;
+        }
+        
+        .choice-button {
+            font-family: "tomarik-brush", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: clamp(1.8rem, 4.5vw, 3rem);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 15px 30px;
+            border: none;
+            background: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            letter-spacing: 2px;
+            display: block;
+            cursor: pointer;
+        }
+        
+        .choice-button:hover {
+            transform: translateY(-3px);
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+            color: #d4af37;
+        }
+        
+        .or-text {
+            font-family: "tomarik-brush", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: clamp(1rem, 2.5vw, 1.6rem);
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin: 0 10px;
+            opacity: 1;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            margin-top: -5px;
+            padding: 10px 15px;
+            padding-top: 15px;
+            border-radius: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-15px);
+            transition: all 0.4s ease;
+            min-width: 200px;
+            text-align: center;
+        }
+        
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background: transparent;
+        }
+        
+        .button-wrapper:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu a {
+            font-family: "tomarik-brush", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: clamp(0.85rem, 1.8vw, 1.1rem);
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+            padding: 5px 0;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .dropdown-menu a:hover {
+            color: #d4af37;
+            transform: translateX(5px);
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .buttons-container {
+                gap: 20px;
+                flex-direction: column;
             }
             
-            .btn {
-                font-size: 1rem;
-                padding: 10px 12px;
+            .choice-button {
+                padding: 12px 25px;
             }
             
-            .dropdown-content a {
-                font-size: 0.9rem;
+            .or-text {
+                margin: 0 10px;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                margin-top: 10px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>ANNA COLLITON</h1>
-        <div class="buttons">
-            <!-- ART Button with Dropdown -->
-            <div class="dropdown">
-                <a href="https://annacollitonvisuals.com/homeandshop" class="btn art-btn">art</a>
-                <div class="dropdown-content">
-                    <a href="#">Logos + merch</a>
-                    <a href="#">Albums design</a>
-                    <a href="#">Photography</a>
-                </div>
-            </div>
+    <div class="main-container" id="mainContainer">
+        <!-- Overlay layer for background switching -->
+        <div class="background-overlay" id="bgOverlay"></div>
+        
+        <!-- Centered content overlay -->
+        <div class="content-overlay">
+            <h1 class="main-title">ANNA COLLITON</h1>
             
-            <!-- MUSIC Button with Dropdown -->
-            <div class="dropdown">
-                <a href="https://annacollitonmusic.com/" class="btn music-btn">music</a>
-                <div class="dropdown-content">
-                    <a href="#">Gigs/tours</a>
-                    <a href="#">Workshops/teaching</a>
-                    <a href="#">Student resources</a>
-                    <a href="#">Projects</a>
-                    <a href="#">EPK</a>
+            <div class="buttons-container">
+                <!-- ART button with dropdown -->
+                <div class="button-wrapper" data-bg="art">
+                    <a href="https://annacollitonvisuals.com/homeandshop" class="choice-button" target="_blank">art</a>
+                    <div class="dropdown-menu">
+                        <a href="https://annacollitonvisuals.com/logos-merch" target="_blank">Logos + merch</a>
+                        <a href="https://annacollitonvisuals.com/albums" target="_blank">Albums design</a>
+                        <a href="https://annacollitonvisuals.com/photography" target="_blank">Photography</a>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- SHOP! Button with stars added -->
-            <div class="shop-btn-container">
-                <a href="https://annacollitonvisuals.com/shop" class="btn shop-btn">shop!</a>
                 
-                <!-- Stars added below -->
-                <div class="star star-small star-1 rotate-15"></div>
-                <div class="star star-medium star-2 rotate-30"></div>
-                <div class="star star-large star-3 rotate-45"></div>
-                <div class="star star-small star-4 rotate-15"></div>
-                <div class="star star-medium star-5 rotate-30"></div>
-                <div class="star star-large star-6 rotate-45"></div>
-                <div class="star star-small star-7 rotate-15"></div>
-                <div class="star star-medium star-8 rotate-30"></div>
-                <div class="star star-large star-9 rotate-45"></div>
+                <!-- OR text -->
+                <span class="or-text">or</span>
+                
+                <!-- MUSIC button with dropdown -->
+                <div class="button-wrapper" data-bg="music">
+                    <a href="https://annacollitonmusic.com/" class="choice-button" target="_blank">music</a>
+                    <div class="dropdown-menu">
+                        <a href="https://annacollitonmusic.com/gigs" target="_blank">Gigs/tours</a>
+                        <a href="https://annacollitonmusic.com/workshops" target="_blank">Workshops/teaching</a>
+                        <a href="https://annacollitonmusic.com/resources" target="_blank">Student resources</a>
+                        <a href="https://annacollitonmusic.com/projects" target="_blank">Projects</a>
+                        <a href="https://annacollitonmusic.com/epk" target="_blank">EPK</a>
+                    </div>
+                </div>
+                
+                <!-- OR text -->
+                <span class="or-text">or</span>
+                
+                <!-- SHOP button (no dropdown) -->
+                <div class="button-wrapper" data-bg="shop">
+                    <a href="https://annacollitonvisuals.com/shop" class="choice-button" target="_blank">shop!</a>
+                </div>
             </div>
         </div>
     </div>
-
-    <!-- Load the custom font -->
+    
     <script>
-        // Load the custom font
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = 'https://use.typekit.net/tomarik-brush.css';
-        document.head.appendChild(link);
+        // Background switching on hover
+        const mainContainer = document.getElementById('mainContainer');
+        const buttonWrappers = document.querySelectorAll('.button-wrapper');
+        
+        buttonWrappers.forEach(wrapper => {
+            wrapper.addEventListener('mouseenter', function() {
+                const bg = this.getAttribute('data-bg');
+                mainContainer.className = 'main-container show-' + bg;
+            });
+            
+            wrapper.addEventListener('mouseleave', function() {
+                mainContainer.className = 'main-container';
+            });
+        });
     </script>
+    
+    <!-- ADD YOUR POPUP SIGNUP FORM CODE HERE -->
+    
 </body>
 </html>
