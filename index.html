@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.typekit.net/tomarik-brush.css">
+    <link href="https://use.typekit.net/tomarik-brush.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -39,7 +39,7 @@
         }
 
         h1 {
-            font-family: "tomarik-brush", "Montserrat", sans-serif;
+            font-family: "tomarik-brush", "Montserrat", cursive;
             font-size: 5rem;
             font-weight: normal;
             margin-bottom: 2rem;
@@ -116,6 +116,7 @@
         /* Shop button stars container */
         .shop-btn-container {
             position: relative;
+            display: inline-block;
         }
 
         /* Stars styling */
@@ -146,15 +147,28 @@
             height: 40px;
         }
 
-        /* Star positions */
-        .star-1 { top: -25px; left: 20px; }
-        .star-2 { top: -15px; right: 30px; }
-        .star-3 { bottom: -20px; left: 15px; }
-        .star-4 { bottom: -30px; right: 25px; }
-        .star-5 { top: 50%; transform: translateY(-50%); left: -35px; }
-        .star-6 { top: 50%; transform: translateY(-50%); right: -35px; }
-        .star-7 { top: -10px; left: 50%; transform: translateX(-50%); }
-        .star-8 { bottom: -15px; left: 50%; transform: translateX(-50%); }
+        /* Three different rotations */
+        .rotate-15 {
+            transform: rotate(15deg);
+        }
+        
+        .rotate-30 {
+            transform: rotate(30deg);
+        }
+        
+        .rotate-45 {
+            transform: rotate(45deg);
+        }
+
+        /* Star positions - moved further away to avoid overlapping */
+        .star-1 { top: -45px; left: 25px; }
+        .star-2 { top: -35px; right: 35px; }
+        .star-3 { bottom: -40px; left: 20px; }
+        .star-4 { bottom: -50px; right: 30px; }
+        .star-5 { top: 50%; transform: translateY(-50%); left: -45px; }
+        .star-6 { top: 50%; transform: translateY(-50%); right: -45px; }
+        .star-7 { top: -30px; left: 50%; transform: translateX(-50%); }
+        .star-8 { bottom: -35px; left: 50%; transform: translateX(-50%); }
         .star-9 { top: 50%; left: 50%; transform: translate(-50%, -50%); }
 
         /* Show stars on hover */
@@ -182,12 +196,15 @@
             .star-medium { width: 22px; height: 22px; }
             .star-large { width: 28px; height: 28px; }
 
-            .star-1 { top: -20px; left: 15px; }
-            .star-2 { top: -12px; right: 20px; }
-            .star-3 { bottom: -15px; left: 10px; }
-            .star-4 { bottom: -22px; right: 18px; }
-            .star-5 { left: -25px; }
-            .star-6 { right: -25px; }
+            /* Adjusted positions for mobile */
+            .star-1 { top: -35px; left: 20px; }
+            .star-2 { top: -25px; right: 25px; }
+            .star-3 { bottom: -30px; left: 15px; }
+            .star-4 { bottom: -40px; right: 20px; }
+            .star-5 { left: -35px; }
+            .star-6 { right: -35px; }
+            .star-7 { top: -25px; }
+            .star-8 { bottom: -30px; }
         }
 
         @media (max-width: 480px) {
@@ -205,12 +222,15 @@
             .star-medium { width: 18px; height: 18px; }
             .star-large { width: 24px; height: 24px; }
 
-            .star-1 { top: -15px; left: 10px; }
-            .star-2 { top: -10px; right: 15px; }
-            .star-3 { bottom: -12px; left: 8px; }
-            .star-4 { bottom: -18px; right: 12px; }
-            .star-5 { left: -20px; }
-            .star-6 { right: -20px; }
+            /* Further adjusted positions for small mobile */
+            .star-1 { top: -25px; left: 15px; }
+            .star-2 { top: -20px; right: 20px; }
+            .star-3 { bottom: -25px; left: 10px; }
+            .star-4 { bottom: -30px; right: 15px; }
+            .star-5 { left: -25px; }
+            .star-6 { right: -25px; }
+            .star-7 { top: -20px; }
+            .star-8 { bottom: -25px; }
         }
     </style>
 </head>
@@ -244,16 +264,16 @@
             <div class="shop-btn-container">
                 <a href="https://annacollitonvisuals.com/shop" class="btn shop-btn">shop!</a>
                 
-                <!-- Stars - 3 small, 3 medium, 3 large -->
-                <div class="star star-small star-1"></div>
-                <div class="star star-medium star-2"></div>
-                <div class="star star-large star-3"></div>
-                <div class="star star-small star-4"></div>
-                <div class="star star-medium star-5"></div>
-                <div class="star star-large star-6"></div>
-                <div class="star star-small star-7"></div>
-                <div class="star star-medium star-8"></div>
-                <div class="star star-large star-9"></div>
+                <!-- Stars with different rotations -->
+                <div class="star star-small star-1 rotate-15"></div>
+                <div class="star star-medium star-2 rotate-30"></div>
+                <div class="star star-large star-3 rotate-45"></div>
+                <div class="star star-small star-4 rotate-15"></div>
+                <div class="star star-medium star-5 rotate-30"></div>
+                <div class="star star-large star-6 rotate-45"></div>
+                <div class="star star-small star-7 rotate-15"></div>
+                <div class="star star-medium star-8 rotate-30"></div>
+                <div class="star star-large star-9 rotate-45"></div>
             </div>
         </div>
     </div>
