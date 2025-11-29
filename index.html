@@ -1,31 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Menu Button with Stars</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anna Colliton</title>
+
+<!-- Adobe Font - tomarik-brush -->
+<link rel="stylesheet" href="https://use.typekit.net/ger2jgy.css">
+<!-- Backup Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-        margin: 0;
+        font-family: 'Montserrat', sans-serif;
+        min-height: 100vh;
         background: #111;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
-        font-family: Arial, sans-serif;
+    }
+
+    .main-container {
+        position: relative;
     }
 
     .menu-button {
         position: relative;
         padding: 20px 40px;
-        background: white;
-        color: black;
-        font-size: 24px;
-        border: none;
+        font-family: "tomarik-brush", sans-serif;
+        font-size: clamp(1.8rem, 4.5vw, 3rem);
+        color: #ffffff;
+        background: transparent;
+        border: 2px solid #fff;
         border-radius: 50px;
         cursor: pointer;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         z-index: 10;
+    }
+
+    .star-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        pointer-events: none;
+        z-index: 5;
     }
 
     .star {
@@ -33,57 +55,41 @@
         opacity: 0;
         transition: opacity 0.5s ease;
         pointer-events: none;
+        background-image: url('Star-Hover.png');
+        background-size: contain;
+        background-repeat: no-repeat;
     }
 
-    .small { width: 10px; }
-    .medium { width: 16px; }
-    .large { width: 22px; }
+    /* Star sizes */
+    .small { width: 12px; height: 12px; }
+    .medium { width: 18px; height: 18px; }
+    .large { width: 24px; height: 24px; }
 
+    /* Show stars on hover */
     .menu-button:hover + .star-container .star {
         opacity: 1;
-    }
-
-    /* Much larger ring so stars stay FAR away from the text */
-    .star-container {
-        position: absolute;
-        width: 420px;
-        height: 420px;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        pointer-events: none;
     }
 </style>
 </head>
 
 <body>
+<div class="main-container">
 
-<div style="position: relative;">
-
-    <button class="menu-button">MENU</button>
+    <button class="menu-button">shop!</button>
 
     <div class="star-container">
-
-        <!-- Top arc -->
-        <img src="Star-Hover.png" class="star medium" style="top: 10px; left: 190px; transform: rotate(30deg);" />
-        <img src="Star-Hover.png" class="star small"  style="top: 30px; left: 120px; transform: rotate(222deg);" />
-        <img src="Star-Hover.png" class="star large"  style="top: 25px; left: 260px; transform: rotate(297deg);" />
-
-        <!-- Left side -->
-        <img src="Star-Hover.png" class="star medium" style="top: 160px; left: 10px; transform: rotate(145deg);" />
-        <img src="Star-Hover.png" class="star small"  style="top: 250px; left: 30px; transform: rotate(290deg);" />
-
-        <!-- Bottom arc -->
-        <img src="Star-Hover.png" class="star large"  style="top: 350px; left: 170px; transform: rotate(80deg);" />
-        <img src="Star-Hover.png" class="star medium" style="top: 330px; left: 250px; transform: rotate(160deg);" />
-
-        <!-- Right side -->
-        <img src="Star-Hover.png" class="star small"  style="top: 210px; left: 370px; transform: rotate(15deg);" />
-        <img src="Star-Hover.png" class="star medium" style="top: 120px; left: 380px; transform: rotate(260deg);" />
-
+        <!-- 9 stars randomly positioned around button -->
+        <div class="star small" style="transform: translate(-80px,-60px) rotate(25deg);"></div>
+        <div class="star medium" style="transform: translate(90px,-50px) rotate(140deg);"></div>
+        <div class="star small" style="transform: translate(60px,70px) rotate(300deg);"></div>
+        <div class="star large" style="transform: translate(-100px,40px) rotate(55deg);"></div>
+        <div class="star medium" style="transform: translate(120px,30px) rotate(200deg);"></div>
+        <div class="star small" style="transform: translate(-60px,-100px) rotate(315deg);"></div>
+        <div class="star medium" style="transform: translate(30px,-120px) rotate(90deg);"></div>
+        <div class="star large" style="transform: translate(-120px,90px) rotate(150deg);"></div>
+        <div class="star medium" style="transform: translate(80px,110px) rotate(280deg);"></div>
     </div>
 
 </div>
-
 </body>
 </html>
