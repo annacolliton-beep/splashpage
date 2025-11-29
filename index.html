@@ -35,20 +35,22 @@
         pointer-events: none;
     }
 
-    /* Star sizes */
     .small { width: 10px; }
     .medium { width: 16px; }
     .large { width: 22px; }
 
-    /* Hover reveal */
     .menu-button:hover + .star-container .star {
         opacity: 1;
     }
 
+    /* Much larger ring so stars stay FAR away from the text */
     .star-container {
         position: absolute;
-        width: 280px;
-        height: 280px;
+        width: 420px;
+        height: 420px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
         pointer-events: none;
     }
 </style>
@@ -62,21 +64,22 @@
 
     <div class="star-container">
 
-        <!-- ⭐ 9 stars with NON-touching text-safe positions -->
-        <!-- Each has customized x/y offsets and random rotations -->
+        <!-- Top arc -->
+        <img src="Star-Hover.png" class="star medium" style="top: 10px; left: 190px; transform: rotate(30deg);" />
+        <img src="Star-Hover.png" class="star small"  style="top: 30px; left: 120px; transform: rotate(222deg);" />
+        <img src="Star-Hover.png" class="star large"  style="top: 25px; left: 260px; transform: rotate(297deg);" />
 
-        <img src="Star-Hover.png" class="star small"  style="top: -10px; left: 120px; transform: rotate(22deg);" />
-        <img src="Star-Hover.png" class="star medium" style="top: -40px; left: 60px; transform: rotate(137deg);" />
-        <img src="Star-Hover.png" class="star small"  style="top: -30px; left: 180px; transform: rotate(291deg);" />
+        <!-- Left side -->
+        <img src="Star-Hover.png" class="star medium" style="top: 160px; left: 10px; transform: rotate(145deg);" />
+        <img src="Star-Hover.png" class="star small"  style="top: 250px; left: 30px; transform: rotate(290deg);" />
 
-        <img src="Star-Hover.png" class="star large"  style="top: 40px; left: -20px; transform: rotate(77deg);" />
-        <img src="Star-Hover.png" class="star medium" style="top: 150px; left: -30px; transform: rotate(18deg);" />
+        <!-- Bottom arc -->
+        <img src="Star-Hover.png" class="star large"  style="top: 350px; left: 170px; transform: rotate(80deg);" />
+        <img src="Star-Hover.png" class="star medium" style="top: 330px; left: 250px; transform: rotate(160deg);" />
 
-        <img src="Star-Hover.png" class="star small"  style="top: 210px; left: 70px; transform: rotate(199deg);" />
-        <img src="Star-Hover.png" class="star large"  style="top: 230px; left: 150px; transform: rotate(315deg);" />
-
-        <img src="Star-Hover.png" class="star medium" style="top: 170px; left: 230px; transform: rotate(122deg);" />
-        <img src="Star-Hover.png" class="star small"  style="top: 60px; left: 250px; transform: rotate(268deg);" />
+        <!-- Right side -->
+        <img src="Star-Hover.png" class="star small"  style="top: 210px; left: 370px; transform: rotate(15deg);" />
+        <img src="Star-Hover.png" class="star medium" style="top: 120px; left: 380px; transform: rotate(260deg);" />
 
     </div>
 
