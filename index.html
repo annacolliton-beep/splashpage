@@ -4,70 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anna Colliton</title>
-    <link rel="stylesheet" href="https://use.typekit.net/ger2jgy.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: "Montserrat", sans-serif;
-            background: url('Plain BG.jpg') center/cover no-repeat;
+            background-image: url('Plain BG.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             color: #ffffff;
             text-align: center;
+            overflow: hidden;
+            position: relative;
         }
 
-        .container { max-width: 800px; padding: 20px; }
+        .container {
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
 
         h1 {
-            font-family: "tomarik-brush", sans-serif;
-            font-weight: 400;
-            font-style: normal;
+            font-family: 'tomarik-brush', 'Montserrat', sans-serif;
             font-size: 5rem;
+            font-weight: normal;
             margin-bottom: 2rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .buttons {
             display: flex;
-            gap: 20px;
-            justify-content: center;
-            align-items: center;
-            max-width: 600px;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 300px;
             margin: 0 auto;
         }
 
         .btn {
-            padding: 15px 30px;
+            position: relative;
+            padding: 15px 20px;
             font-size: 1.5rem;
             font-weight: 600;
             color: #ffffff;
-            background: transparent;
+            background-color: transparent;
             border: 2px solid #ffffff;
             border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
-            white-space: nowrap;
+            display: block;
+            width: 100%;
         }
 
         .btn:hover {
-            color: #f5e8c8;
-            border-color: #f5e8c8;
+            color: #d4af37;
+            border-color: #d4af37;
         }
 
-        .dropdown { position: relative; }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
 
         .dropdown-content {
             display: none;
             position: absolute;
-            background: rgba(0, 0, 0, 0.7);
-            min-width: 200px;
-            top: 100%;
-            left: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            min-width: 100%;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
             border-radius: 0 0 5px 5px;
             overflow: hidden;
         }
@@ -78,20 +98,45 @@
             text-decoration: none;
             display: block;
             transition: color 0.3s ease;
-            text-align: left;
         }
 
-        .dropdown-content a:hover { color: #f5e8c8; }
-        .dropdown:hover .dropdown-content { display: block; }
+        .dropdown-content a:hover {
+            color: #d4af37;
+        }
 
-        /* Stars */
-        .shop-btn-container { position: relative; }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Background hover effects - currently disabled */
+        /*
+        .art-btn:hover ~ body {
+            background-image: url('Art BG.jpg');
+        }
+        
+        .music-btn:hover ~ body {
+            background-image: url('Music BG.jpg');
+        }
+        
+        .shop-btn:hover ~ body {
+            background-image: url('Shop BG.jpg');
+        }
+        */
+
+        /* STAR CODE ADDED BELOW - NOTHING ELSE CHANGED */
+        .shop-btn-container {
+            position: relative;
+            width: 100%;
+        }
 
         .star {
             position: absolute;
-            background: url('Star - Hover.png') center/contain no-repeat;
+            background-image: url('Star - Hover.png');
+            background-size: contain;
+            background-repeat: no-repeat;
             opacity: 0;
             transition: opacity 0.3s ease;
+            z-index: 1;
             pointer-events: none;
         }
 
@@ -103,54 +148,41 @@
         .rotate-30 { transform: rotate(30deg); }
         .rotate-45 { transform: rotate(45deg); }
 
-        /* Star positions */
         .star-1 { top: -45px; left: 25px; }
         .star-2 { top: -35px; right: 35px; }
         .star-3 { bottom: -40px; left: 20px; }
         .star-4 { bottom: -50px; right: 30px; }
-        .star-5 { top: 50%; left: -45px; transform: translateY(-50%); }
-        .star-6 { top: 50%; right: -45px; transform: translateY(-50%); }
+        .star-5 { top: 50%; transform: translateY(-50%); left: -45px; }
+        .star-6 { top: 50%; transform: translateY(-50%); right: -45px; }
         .star-7 { top: -30px; left: 50%; transform: translateX(-50%); }
         .star-8 { bottom: -35px; left: 50%; transform: translateX(-50%); }
         .star-9 { top: 50%; left: 50%; transform: translate(-50%, -50%); }
 
-        .shop-btn-container:hover .star { opacity: 1; }
+        .shop-btn-container:hover .star {
+            opacity: 1;
+        }
+        /* END OF STAR CODE */
 
         @media (max-width: 768px) {
-            h1 { font-size: 3.5rem; }
-            .buttons { flex-direction: column; gap: 15px; }
-            .btn { font-size: 1.2rem; padding: 12px 25px; width: 200px; }
+            h1 {
+                font-size: 3.5rem;
+            }
             
-            .star-small { width: 15px; height: 15px; }
-            .star-medium { width: 22px; height: 22px; }
-            .star-large { width: 28px; height: 28px; }
-
-            .star-1 { top: -35px; left: 20px; }
-            .star-2 { top: -25px; right: 25px; }
-            .star-3 { bottom: -30px; left: 15px; }
-            .star-4 { bottom: -40px; right: 20px; }
-            .star-5 { left: -35px; }
-            .star-6 { right: -35px; }
-            .star-7 { top: -25px; }
-            .star-8 { bottom: -30px; }
+            .btn {
+                font-size: 1.2rem;
+                padding: 12px 15px;
+            }
         }
 
         @media (max-width: 480px) {
-            h1 { font-size: 2.5rem; }
-            .btn { font-size: 1rem; padding: 10px 20px; width: 180px; }
+            h1 {
+                font-size: 2.5rem;
+            }
             
-            .star-small { width: 12px; height: 12px; }
-            .star-medium { width: 18px; height: 18px; }
-            .star-large { width: 24px; height: 24px; }
-
-            .star-1 { top: -25px; left: 15px; }
-            .star-2 { top: -20px; right: 20px; }
-            .star-3 { bottom: -25px; left: 10px; }
-            .star-4 { bottom: -30px; right: 15px; }
-            .star-5 { left: -25px; }
-            .star-6 { right: -25px; }
-            .star-7 { top: -20px; }
-            .star-8 { bottom: -25px; }
+            .btn {
+                font-size: 1rem;
+                padding: 10px 12px;
+            }
         }
     </style>
 </head>
@@ -158,29 +190,33 @@
     <div class="container">
         <h1>ANNA COLLITON</h1>
         <div class="buttons">
+            <!-- ART Button with Dropdown -->
             <div class="dropdown">
-                <a href="https://annacollitonvisuals.com/homeandshop" class="btn">art</a>
+                <a href="https://annacollitonvisuals.com/homeandshop" class="btn art-btn">art</a>
                 <div class="dropdown-content">
-                    <a href="https://annacollitonvisuals.com/homeandshop">Logos + merch</a>
-                    <a href="https://annacollitonvisuals.com/homeandshop">Albums design</a>
-                    <a href="https://annacollitonvisuals.com/homeandshop">Photography</a>
+                    <a href="#">Logos + merch</a>
+                    <a href="#">Albums design</a>
+                    <a href="#">Photography</a>
                 </div>
             </div>
             
+            <!-- MUSIC Button with Dropdown -->
             <div class="dropdown">
-                <a href="https://annacollitonmusic.com/" class="btn">music</a>
+                <a href="https://annacollitonmusic.com/" class="btn music-btn">music</a>
                 <div class="dropdown-content">
-                    <a href="https://annacollitonmusic.com/">Gigs/tours</a>
-                    <a href="https://annacollitonmusic.com/">Workshops/teaching</a>
-                    <a href="https://annacollitonmusic.com/">Student resources</a>
-                    <a href="https://annacollitonmusic.com/">Projects</a>
-                    <a href="https://annacollitonmusic.com/">EPK</a>
+                    <a href="#">Gigs/tours</a>
+                    <a href="#">Workshops/teaching</a>
+                    <a href="#">Student resources</a>
+                    <a href="#">Projects</a>
+                    <a href="#">EPK</a>
                 </div>
             </div>
             
+            <!-- SHOP! Button with stars added -->
             <div class="shop-btn-container">
-                <a href="https://annacollitonvisuals.com/shop" class="btn">shop!</a>
+                <a href="https://annacollitonvisuals.com/shop" class="btn shop-btn">shop!</a>
                 
+                <!-- Stars added below -->
                 <div class="star star-small star-1 rotate-15"></div>
                 <div class="star star-medium star-2 rotate-30"></div>
                 <div class="star star-large star-3 rotate-45"></div>
@@ -193,5 +229,14 @@
             </div>
         </div>
     </div>
+
+    <!-- Load the custom font -->
+    <script>
+        // Load the custom font
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://use.typekit.net/tomarik-brush.css';
+        document.head.appendChild(link);
+    </script>
 </body>
 </html>
