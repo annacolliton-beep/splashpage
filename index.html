@@ -3,15 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Header Tooltip with Brevo Form</title>
+<title>My Splash Page</title>
 <style>
-  /* Header styling */
+  /* Body styling */
   body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin-top: 100px;
+    background-color: #f5f5f5;
   }
 
+  /* Header styling */
   h1 {
     position: relative;
     display: inline-block;
@@ -49,7 +51,7 @@
     opacity: 1;
   }
 
-  /* Optional arrow below the tooltip */
+  /* Tooltip arrow */
   .tooltip::after {
     content: "";
     position: absolute;
@@ -61,8 +63,8 @@
     border-color: transparent transparent #ccc transparent;
   }
 
-  /* Style for the Brevo form inside tooltip */
-  .brevo-form input[type="email"] {
+  /* Newsletter form styling */
+  .newsletter-form input[type="email"] {
     width: 90%;
     padding: 5px;
     margin: 8px 0;
@@ -70,7 +72,7 @@
     border: 1px solid #aaa;
   }
 
-  .brevo-form button {
+  .newsletter-form button {
     padding: 6px 12px;
     border: none;
     border-radius: 4px;
@@ -79,7 +81,7 @@
     cursor: pointer;
   }
 
-  .brevo-form button:hover {
+  .newsletter-form button:hover {
     background-color: #0056b3;
   }
 </style>
@@ -89,7 +91,7 @@
 <h1>
   Join My Mailing List
   <span class="tooltip">
-    <form class="brevo-form" action="https://YOUR-BREVO-FORM-ENDPOINT" method="post" target="_blank">
+    <form class="newsletter-form" action="https://YOUR-BREVO-FORM-ENDPOINT" method="post" target="_blank">
       <label for="email">Enter your email:</label><br>
       <input type="email" id="email" name="EMAIL" placeholder="you@example.com" required><br>
       <button type="submit">Subscribe</button>
