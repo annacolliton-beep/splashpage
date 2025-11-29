@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anna Colliton</title>
     
-    <!-- Adobe Font - tomarik-brush -->
+    <!-- Adobe Font - tomarik-brush (main decorative font) -->
     <link rel="stylesheet" href="https://use.typekit.net/ger2jgy.css">
     
-    <!-- Backup Google Font -->
+    <!-- Google Font - Montserrat (backup body font) -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
+        /* ===================================
+           GLOBAL RESET & BASE STYLES
+        =================================== */
         * {
             margin: 0;
             padding: 0;
@@ -21,17 +24,32 @@
         body {
             font-family: 'Montserrat', sans-serif;
             min-height: 100vh;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
         
+        /* ===================================
+           MAIN BACKGROUND CONTAINER
+        =================================== */
         .main-container {
             min-height: 100vh;
             position: relative;
             background-size: cover;
             background-position: center;
-            background-image: url('Plain BG.jpg');
+            background-color: #1A1A1A; /* Dark charcoal background */
         }
         
+        /* Dark overlay to improve text readability */
+        .main-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3); /* 30% black overlay */
+        }
+        
+        /* Background overlay layer (not currently used but kept for future functionality) */
         .background-overlay {
             position: absolute;
             top: 0;
@@ -44,48 +62,51 @@
             transition: opacity 0.5s ease;
         }
         
-        .main-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.3);
-        }
-        
+        /* ===================================
+           CONTENT LAYER (sits above background)
+        =================================== */
         .content-overlay {
             position: relative;
-            z-index: 10;
+            z-index: 10; /* Ensures content sits above background */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            pointer-events: none;
-            padding-bottom: 12%;
+            pointer-events: none; /* Allows clicks to pass through to background */
+            padding-bottom: 12%; /* Adds space at bottom */
         }
         
+        /* ===================================
+           MAIN TITLE
+        =================================== */
         .main-title {
             font-family: "tomarik-brush", sans-serif;
             font-weight: 400;
             font-style: normal;
-            font-size: clamp(3.5rem, 10vw, 7rem);
-            color: #ffffff;
+            font-size: clamp(3.5rem, 10vw, 7rem); /* Responsive: 3.5rem to 7rem based on viewport */
+            color: #F8F8F0;
             text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
             margin-bottom: 50px;
             line-height: 1.1;
         }
         
+        /* ===================================
+           BUTTONS CONTAINER
+        =================================== */
         .buttons-container {
             display: flex;
             gap: 30px;
             margin-bottom: 30px;
-            pointer-events: auto;
+            pointer-events: auto; /* Re-enables clicks for buttons */
             align-items: center;
             justify-content: center;
         }
         
+        /* ===================================
+           INDIVIDUAL BUTTON WRAPPER
+           (holds button + dropdown menu)
+        =================================== */
         .button-wrapper {
             position: relative;
             display: flex;
@@ -95,12 +116,13 @@
             justify-content: flex-end;
         }
         
+        /* Main navigation buttons (art, music, shop) */
         .choice-button {
             font-family: "tomarik-brush", sans-serif;
             font-weight: 400;
             font-style: normal;
-            font-size: clamp(1.8rem, 4.5vw, 3rem);
-            color: #ffffff;
+            font-size: clamp(1.8rem, 4.5vw, 3rem); /* Responsive font size */
+            color: #F8F8F0;
             text-decoration: none;
             padding: 15px 30px;
             border: none;
@@ -112,38 +134,44 @@
             cursor: pointer;
         }
         
+        /* Button hover effect */
         .choice-button:hover {
-            transform: translateY(-3px);
+            transform: translateY(-3px); /* Lifts button slightly */
             text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
-            color: #d4af37;
+            color: #B8860B; /* Dark goldenrod hover color */
         }
         
+        /* "or" text between buttons */
         .or-text {
             font-family: "tomarik-brush", sans-serif;
             font-weight: 400;
             font-style: normal;
             font-size: clamp(1rem, 2.5vw, 1.6rem);
-            color: #ffffff;
+            color: #F8F8F0;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             margin: 0 10px;
             opacity: 1;
         }
         
+        /* ===================================
+           DROPDOWN MENU STYLES
+        =================================== */
         .dropdown-menu {
             position: absolute;
-            top: 100%;
+            top: 100%; /* Positions below the button */
             margin-top: -5px;
             padding: 10px 15px;
             padding-top: 15px;
             border-radius: 10px;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-15px);
+            transform: translateY(-15px); /* Starts slightly above final position */
             transition: all 0.4s ease;
             min-width: 200px;
             text-align: center;
         }
         
+        /* Decorative line above dropdown (currently transparent) */
         .dropdown-menu::before {
             content: '';
             position: absolute;
@@ -155,60 +183,84 @@
             background: transparent;
         }
         
+        /* Show dropdown on button hover */
         .button-wrapper:hover .dropdown-menu {
             opacity: 1;
             visibility: visible;
-            transform: translateY(0);
+            transform: translateY(0); /* Slides down into place */
         }
         
+        /* Dropdown menu links */
         .dropdown-menu a {
             font-family: "tomarik-brush", sans-serif;
             font-weight: 400;
             font-style: normal;
             font-size: clamp(0.85rem, 1.8vw, 1.1rem);
-            color: #ffffff;
+            color: #F8F8F0;
             text-decoration: none;
             display: block;
             padding: 5px 0;
             transition: all 0.3s ease;
-            white-space: nowrap;
+            white-space: nowrap; /* Prevents text wrapping */
         }
         
+        /* Dropdown link hover effect */
         .dropdown-menu a:hover {
-            color: #d4af37;
-            transform: translateX(5px);
+            color: #B8860B; /* Dark goldenrod hover color */
+            transform: translateX(5px); /* Slides slightly right */
         }
         
+        /* ===================================
+           MOBILE RESPONSIVE STYLES
+        =================================== */
         @media (max-width: 768px) {
+            /* Remove bottom padding on mobile */
+            .content-overlay {
+                padding-bottom: 0;
+            }
+            
+            /* Stack buttons vertically on mobile */
             .buttons-container {
-                gap: 20px;
+                gap: 40px;
                 flex-direction: column;
             }
             
+            /* Slightly smaller button padding on mobile */
             .choice-button {
                 padding: 12px 25px;
             }
             
+            /* Keep "or" text spacing consistent */
             .or-text {
                 margin: 0 10px;
             }
             
+            /* Show dropdown immediately on mobile (always visible) */
             .dropdown-menu {
                 position: static;
                 margin-top: 10px;
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
             }
         }
     </style>
 </head>
 <body>
+    <!-- Main container with background image -->
     <div class="main-container" id="mainContainer">
-        <div class="background-overlay" id="bgOverlay"></div>
+        <!-- Background overlay layer (for future hover effects) -->
+        <div class="background-overlay" id="backgroundOverlay"></div>
         
+        <!-- Content sits on top of background -->
         <div class="content-overlay">
+            <!-- Main site title -->
             <h1 class="main-title">ANNA COLLITON</h1>
             
+            <!-- Navigation buttons container -->
             <div class="buttons-container">
-                <!-- ART button with dropdown -->
+                
+                <!-- ART button with dropdown menu -->
                 <div class="button-wrapper" data-bg="art">
                     <a href="https://annacollitonvisuals.com/homeandshop" class="choice-button" target="_blank">art</a>
                     <div class="dropdown-menu">
@@ -220,20 +272,20 @@
                 
                 <span class="or-text">or</span>
                 
-                <!-- MUSIC button with dropdown -->
-            <div class="button-wrapper" data-bg="music">
-    <a href="https://annacollitonmusic.com/" class="choice-button" target="_blank">music</a>
-    <div class="dropdown-menu">
-        <a href="https://annacollitonmusic.com/gigsandtours" target="_blank">gigs + tours</a>
-        <a href="https://annacollitonmusic.com/workshops-lessons" target="_blank">workshops + lessons</a>
-        <a href="https://annacollitonmusic.com/projects" target="_blank">Projects</a>
-        <a href="https://annacollitonmusic.com/epk" target="_blank">EPK</a>
-    </div>
-</div>
+                <!-- MUSIC button with dropdown menu -->
+                <div class="button-wrapper" data-bg="music">
+                    <a href="https://annacollitonmusic.com/" class="choice-button" target="_blank">music</a>
+                    <div class="dropdown-menu">
+                        <a href="https://annacollitonmusic.com/gigsandtours" target="_blank">gigs + tours</a>
+                        <a href="https://annacollitonmusic.com/workshops-lessons" target="_blank">workshops + lessons</a>
+                        <a href="https://annacollitonmusic.com/projects" target="_blank">Projects</a>
+                        <a href="https://annacollitonmusic.com/epk" target="_blank">EPK</a>
+                    </div>
+                </div>
                 
                 <span class="or-text">or</span>
                 
-                <!-- SHOP button -->
+                <!-- SHOP button (no dropdown) -->
                 <div class="button-wrapper" data-bg="shop">
                     <a href="https://www.etsy.com/shop/LittleArsonAnnie" class="choice-button" target="_blank">shop!</a>
                 </div>
@@ -242,17 +294,34 @@
     </div>
     
     <script>
-        // Background switching on hover
+        /* ===================================
+           BACKGROUND SWITCHING ON HOVER
+           
+           This script changes the background when hovering over buttons.
+           Currently the functionality is set up but no background changes
+           are applied (you'd need to add CSS classes like .show-art, etc.)
+        =================================== */
+        
+        // Get the main container element
         const mainContainer = document.getElementById('mainContainer');
+        
+        // Get all button wrapper elements
         const buttonWrappers = document.querySelectorAll('.button-wrapper');
         
-        buttonWrappers.forEach(wrapper => {
+        // Add hover listeners to each button wrapper
+        buttonWrappers.forEach(function(wrapper) {
+            // When mouse enters the button area
             wrapper.addEventListener('mouseenter', function() {
-                const bg = this.getAttribute('data-bg');
-                mainContainer.className = 'main-container show-' + bg;
+                // Get the background type from data attribute (art, music, or shop)
+                const backgroundType = this.getAttribute('data-bg');
+                
+                // Change the container's class to trigger background change
+                mainContainer.className = 'main-container show-' + backgroundType;
             });
             
+            // When mouse leaves the button area
             wrapper.addEventListener('mouseleave', function() {
+                // Reset to default background
                 mainContainer.className = 'main-container';
             });
         });
