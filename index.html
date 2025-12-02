@@ -202,34 +202,26 @@
             pointer-events: auto;
         }
         
-        /* TAGLINE */
-        .tagline {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 300;
-            font-size: clamp(0.9rem, 2vw, 1.2rem);
-            color: #333333;
-            margin-top: 15px;
-            margin-bottom: 25px;
-            letter-spacing: 1px;
-            opacity: 0.85;
-        }
-        
         .social-dropdown {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(15px);
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-15px);
             transition: all 0.4s ease;
             display: flex;
             gap: 25px;
             justify-content: center;
             align-items: center;
             padding: 10px 0;
+            margin-bottom: 10px;
         }
         
         .social-wrapper:hover .social-dropdown {
             opacity: 1;
             visibility: visible;
-            transform: translateY(0);
+            transform: translateX(-50%) translateY(0);
         }
         
         .social-dropdown a {
@@ -289,8 +281,6 @@
         
         <div class="content-overlay">
             <div class="social-wrapper">
-                <h1 class="main-title">ANNA COLLITON</h1>
-                <p class="tagline">Art & Design + Irish Traditional Music</p>
                 <div class="social-dropdown">
                     <a href="https://www.linkedin.com/in/annacolliton" target="_blank" aria-label="Visit Anna's LinkedIn profile">
                         <img src="All Social Icons - Blobs-01.svg" alt="LinkedIn">
@@ -308,6 +298,7 @@
                         <img src="All Social Icons - Blobs-03.svg" alt="Etsy">
                     </a>
                 </div>
+                <h1 class="main-title">ANNA COLLITON</h1>
             </div>
             
             <div class="buttons-container">
