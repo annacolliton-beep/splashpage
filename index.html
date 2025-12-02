@@ -259,28 +259,37 @@
                 padding-bottom: 0;
             }
             
-            .buttons-container {
-                gap: 40px;
+            /* Center and stack everything */
+            .social-wrapper {
+                transform: translateY(0) !important;
+            }
+            
+            .text-divider {
+                transform: translateY(0) !important;
+            }
+            
+            .tagline {
+                transform: translateY(0) !important;
                 flex-direction: column;
+                gap: 40px;
             }
             
-            .choice-button {
-                padding: 12px 25px;
+            .tagline-divider {
+                display: none;
             }
             
-            .or-text {
-                margin: 0 10px;
+            /* Social icons always visible and centered */
+            .social-dropdown {
+                position: static !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+                margin-top: 20px;
             }
             
             .dropdown-menu {
                 position: static;
                 margin-top: 10px;
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0);
-            }
-            
-            .social-dropdown {
                 opacity: 1;
                 visibility: visible;
                 transform: translateY(0);
