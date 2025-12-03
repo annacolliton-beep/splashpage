@@ -125,17 +125,76 @@
             display: none;
         }
         
-        /* TEXT DIVIDER */
-        .text-divider {
+        /* EMAIL SIGNUP FORM */
+        .email-signup-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(15px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 0;
+            margin-top: 10px;
+            white-space: nowrap;
+        }
+        
+        .social-wrapper:hover .email-signup-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .email-signup-label {
             font-family: "tomarik-brush", sans-serif;
             font-weight: 400;
             font-style: normal;
             font-size: clamp(0.75rem, 1.5vw, 1rem);
             color: #000000;
-            text-align: center;
-            letter-spacing: 12px;
-            opacity: 0.95;
-            line-height: 0.95;
+        }
+        
+        .email-signup-input {
+            font-family: 'Montserrat', sans-serif;
+            padding: 8px 15px;
+            border: 1.5px solid #000000;
+            border-radius: 20px;
+            font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+            outline: none;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+            width: 220px;
+        }
+        
+        .email-signup-input:focus {
+            border-color: #000000;
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .email-signup-input::placeholder {
+            color: #666666;
+        }
+        
+        .email-submit-btn {
+            font-family: "tomarik-brush", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            padding: 8px 20px;
+            background: #000000;
+            color: #FFFEF9;
+            border: none;
+            border-radius: 20px;
+            font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .email-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
         
         /* BUTTONS */
@@ -259,13 +318,12 @@
                 padding-bottom: 0;
             }
             
-            /* Center and stack everything */
-            .social-wrapper {
-                transform: translateY(0) !important;
-            }
-            
-            .text-divider {
-                transform: translateY(0) !important;
+            .dropdown-menu {
+                position: static;
+                margin-top: 10px;
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
             }
             
             .tagline {
@@ -278,7 +336,10 @@
                 display: none;
             }
             
-            /* Social icons always visible and centered */
+            /* Center and stack everything */
+            .social-wrapper {
+                transform: translateY(0) !important;
+            }
             .social-dropdown {
                 position: static !important;
                 opacity: 1 !important;
@@ -287,12 +348,19 @@
                 margin-top: 20px;
             }
             
-            .dropdown-menu {
-                position: static;
-                margin-top: 10px;
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0);
+            .email-signup-dropdown {
+                position: static !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+                margin-top: 15px;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .email-signup-input {
+                width: 100%;
+                max-width: 250px;
             }
         }
     </style>
@@ -323,9 +391,7 @@
                 <h1 class="main-title">ANNA COLLITON</h1>
             </div>
             
-            <div class="text-divider" style="margin-bottom: 8vh; transform: translateY(-200px);">X O X O</div>
-            
-            <div class="tagline" style="transform: translateY(-200px);">
+            <div class="tagline" style="transform: translateY(-200px); margin-bottom: 8vh;">
                 <div class="tagline-section">
                     <a href="https://annacollitonvisuals.com/home" target="_blank" style="text-decoration: none; color: inherit;">
                         <span>Art + Design</span>
