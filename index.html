@@ -19,7 +19,6 @@
             overflow-x: hidden;
         }
 
-        /* MAIN CONTAINER */
         .main-container {
             min-height: 100vh;
             position: relative;
@@ -35,7 +34,6 @@
             background: rgba(255, 248, 231, 0.3);
         }
 
-        /* CONTENT */
         .content-overlay {
             position: relative; 
             z-index: 10; 
@@ -47,7 +45,6 @@
             pointer-events: none;
         }
 
-        /* TITLE */
         .main-title {
             font-family: "tomarik-brush", sans-serif;
             font-size: clamp(2.5rem, 6vw, 4.5rem);
@@ -59,11 +56,8 @@
             pointer-events: auto;
             position: relative;
         }
-        .main-title:hover { 
-            transform: translateY(-3px); 
-        }
+        .main-title:hover { transform: translateY(-3px); }
 
-        /* TAGLINE */
         .tagline {
             font-family: "tomarik-brush", sans-serif;
             font-size: clamp(1.2rem, 3vw, 2rem);
@@ -83,15 +77,9 @@
             flex-direction: column; 
             align-items: center;
         }
-        .tagline-section:hover { 
-            transform: translateY(-3px); 
-        }
-        .tagline-divider { 
-            color: #333; 
-            opacity: 0.7; 
-        }
+        .tagline-section:hover { transform: translateY(-3px); }
+        .tagline-divider { color: #333; opacity: 0.7; }
 
-        /* DROPDOWN */
         .dropdown-menu {
             position: absolute;
             top: 100%;
@@ -126,7 +114,6 @@
             color: #555;
         }
 
-        /* SOCIAL */
         .social-wrapper { 
             position: relative; 
             margin-bottom: 50px; 
@@ -157,9 +144,7 @@
             text-decoration: none; 
             display: inline-block; 
         }
-        .social-dropdown a:hover { 
-            transform: scale(1.2); 
-        }
+        .social-dropdown a:hover { transform: scale(1.2); }
         .social-dropdown img { 
             width: 32px; 
             height: 32px; 
@@ -170,11 +155,8 @@
             height: 42.32px; 
         }
 
-        /* MOBILE */
         @media (max-width: 768px) {
-            .content-overlay { 
-                padding: 20px;
-            }
+            .content-overlay { padding: 20px; }
             .social-wrapper {
                 margin-bottom: 30px !important;
                 transform: translateY(0) !important;
@@ -188,88 +170,10 @@
                 margin-bottom: 20px;
             }
             .tagline { 
-                transform: translateY(0) !important; 
                 flex-direction: column; 
                 gap: 40px;
                 margin-bottom: 40px !important;
             }
-            .tagline-divider { 
-                display: none; 
-            }
+            .tagline-divider { display: none; }
             .dropdown-menu { 
-                position: static; 
-                margin-top: 10px; 
-                opacity: 1; 
-                visibility: visible; 
-                transform: translateY(0); 
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="main-container" id="mainContainer">
-        <div class="content-overlay">
-            <div class="social-wrapper" style="margin-bottom: 8vh; transform: translateY(-100px);">
-                <div class="social-dropdown">
-                    <a href="https://www.linkedin.com/in/annacolliton" target="_blank" aria-label="Visit Anna's LinkedIn profile">
-                        <img src="All Social Icons - Blobs-01.svg" alt="LinkedIn">
-                    </a>
-                    <a href="https://www.tiktok.com/@anna.colliton" target="_blank" aria-label="Visit Anna's TikTok profile">
-                        <img src="All Social Icons - Blobs-04.svg" alt="TikTok">
-                    </a>
-                    <a href="https://www.instagram.com/annacolliton/" target="_blank" aria-label="Visit Anna's Instagram profile">
-                        <img src="All Social Icons - Blobs-05.svg" alt="Instagram">
-                    </a>
-                    <a href="https://www.facebook.com/annacolliton" target="_blank" aria-label="Visit Anna's Facebook page">
-                        <img src="All Social Icons - Blobs-02.svg" alt="Facebook">
-                    </a>
-                    <a href="https://www.etsy.com/shop/LittleArsonAnnie" target="_blank" aria-label="Visit Anna's Etsy shop">
-                        <img src="All Social Icons - Blobs-06.svg" alt="Shop">
-                    </a>
-                </div>
-                <h1 class="main-title">ANNA COLLITON</h1>
-            </div>
-
-            <!-- TAGLINE / NAV -->
-            <div class="tagline" style="transform: translateY(-200px); margin-bottom: 8vh;">
-                <!-- ART + DESIGN -->
-                <div class="tagline-section">
-                    <a href="https://annacollitonvisuals.com/logos-merch" target="_blank" style="text-decoration: none; color: inherit;">
-                        <span>Art + Design</span>
-                    </a>
-                    <div class="dropdown-menu">
-                        <a href="https://annacollitonvisuals.com/logos-merch" target="_blank">Logos + merch</a>
-                        <a href="https://annacollitonvisuals.com/" target="_blank">album packaging + print design</a>
-                        <a href="https://annacollitonvisuals.com/photography" target="_blank">Photography</a>
-                    </div>
-                </div>
-
-                <span class="tagline-divider">|</span>
-
-                <!-- MUSIC -->
-                <div class="tagline-section">
-                    <a href="https://annacollitonmusic.com/" target="_blank" style="text-decoration: none; color: inherit;">
-                        <span>Bodhrán + Irish Trad</span>
-                    </a>
-                    <div class="dropdown-menu">
-                        <a href="https://annacollitonmusic.com/projects" target="_blank">Projects, Books, and Recordings</a>
-                        <a href="https://annacollitonmusic.com/workshops-lessons" target="_blank">workshops + lessons</a>
-                        <a href="https://annacollitonmusic.com/gigsandtours" target="_blank">gigs + tours</a>
-                        <a href="https://annacollitonmusic.com/epk" target="_blank">photo + video</a>
-                    </div>
-                </div>
-
-                <span class="tagline-divider">|</span>
-
-                <!-- SHOP -->
-                <div class="tagline-section" style="align-items: flex-end;">
-                    <a href="https://www.etsy.com/shop/LittleArsonAnnie" target="_blank" style="text-decoration: none; color: inherit; display: block;">
-                        <img src="Straight to the Shop Button.svg" alt="Shop" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="height: auto; width: auto; max-height: 2rem; display: block;">
-                        <span style="display: none;">Shop!</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+                positi
