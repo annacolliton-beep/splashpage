@@ -1,29 +1,239 @@
-<div class="tagline" style="transform: translateY(-200px); margin-bottom: 8vh;">
-    <!-- ART + DESIGN -->
-    <div class="tagline-section">
-        <a href="https://annacollitonvisuals.com/logos-merch" target="_blank" style="text-decoration: none; color: inherit;">
-            <span>Art + Design</span>
-        </a>
-        <div class="dropdown-menu">
-            <a href="https://annacollitonvisuals.com/logos-merch" target="_blank">Logos + merch</a>
-            <a href="https://annacollitonvisuals.com/" target="_blank">album packaging and print design</a>
-            <a href="https://annacollitonvisuals.com/photography" target="_blank">Photography</a>
-            <a href="https://www.etsy.com/shop/annacolliton" target="_blank">Shop!</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Anna Colliton</title>
+
+    <!-- Adobe Font - tomarik-brush -->
+    <link rel="stylesheet" href="https://use.typekit.net/ger2jgy.css">
+
+    <!-- Google Font - Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* MAIN CONTAINER */
+        .main-container {
+            min-height: 100vh;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-color: #FFFEF9;
+        }
+        .main-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255, 248, 231, 0.3);
+        }
+        .background-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover; background-position: center; opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        /* CONTENT */
+        .content-overlay {
+            position: relative; z-index: 10; min-height: 100vh;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            pointer-events: none;
+        }
+
+        /* TITLE */
+        .main-title {
+            font-family: "tomarik-brush", sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            color: #000;
+            margin-bottom: 40px;
+            line-height: 1.1;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            pointer-events: auto;
+            position: relative;
+        }
+        .main-title:hover { transform: translateY(-3px); }
+
+        /* TAGLINE */
+        .tagline {
+            font-family: "tomarik-brush", sans-serif;
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: #000;
+            display: flex; gap: 20px; align-items: center; justify-content: center;
+            pointer-events: auto;
+        }
+        .tagline-section {
+            position: relative; cursor: pointer; transition: all 0.3s ease;
+            padding: 10px 15px; display: flex; flex-direction: column; align-items: center;
+        }
+        .tagline-section:hover { transform: translateY(-3px); }
+        .tagline-divider { color: #333; opacity: 0.7; }
+
+        /* DROPDOWN */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            margin-top: 5px;
+            padding: 10px 15px;
+            padding-top: 15px;
+            border-radius: 10px;
+            opacity: 0; visibility: hidden; transform: translateY(-15px);
+            transition: all 0.4s ease; min-width: 200px; text-align: center;
+        }
+        .tagline-section:hover .dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateY(0);
+        }
+        .dropdown-menu a {
+            font-family: "tomarik-brush", sans-serif;
+            font-size: clamp(0.95rem, 2vw, 1.25rem);
+            color: #000; text-decoration: none; display: block; padding: 8px 0;
+            transition: all 0.3s ease; white-space: nowrap;
+        }
+        .dropdown-menu a:hover { transform: translateX(5px); }
+
+        /* SOCIAL */
+        .social-wrapper { position: relative; margin-bottom: 50px; pointer-events: auto; }
+        .social-dropdown {
+            position: absolute; bottom: 100%; left: 50%;
+            transform: translateX(-50%) translateY(15px);
+            opacity: 0; visibility: hidden; transition: all 0.4s ease;
+            display: flex; gap: 25px; justify-content: center; align-items: center;
+            padding: 10px 0; margin-bottom: 10px;
+        }
+        .social-wrapper:hover .social-dropdown {
+            opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
+        }
+        .social-dropdown a { transition: all 0.3s ease; text-decoration: none; display: inline-block; }
+        .social-dropdown a:hover { transform: scale(1.2); }
+        .social-dropdown img { width: 32px; height: 32px; display: block; }
+        .social-dropdown a:last-child img { width: 42.32px; height: 42.32px; }
+
+        /* HIDDEN BUTTONS (kept for parity) */
+        .buttons-container { display: none; }
+        .button-wrapper { position: relative; display:flex; flex-direction:column; align-items:center; min-height:80px; justify-content:flex-end; }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .content-overlay { padding-bottom: 0; }
+            .dropdown-menu { position: static; margin-top: 10px; opacity: 1; visibility: visible; transform: translateY(0); }
+            .tagline { transform: translateY(0) !important; flex-direction: column; gap: 40px; }
+            .tagline-divider { display: none; }
+            .social-wrapper { transform: translateY(0) !important; }
+            .social-dropdown { position: static !important; opacity: 1 !important; visibility: visible !important; transform: none !important; margin-top: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container" id="mainContainer">
+        <div class="background-overlay" id="backgroundOverlay"></div>
+
+        <div class="content-overlay">
+            <div class="social-wrapper" style="margin-bottom: 8vh; transform: translateY(-100px);">
+                <div class="social-dropdown">
+                    <a href="https://www.linkedin.com/in/annacolliton" target="_blank" aria-label="Visit Anna's LinkedIn profile">
+                        <img src="All Social Icons - Blobs-01.svg" alt="LinkedIn">
+                    </a>
+                    <a href="https://www.tiktok.com/@anna.colliton" target="_blank" aria-label="Visit Anna's TikTok profile">
+                        <img src="All Social Icons - Blobs-04.svg" alt="TikTok">
+                    </a>
+                    <a href="https://www.instagram.com/annacolliton/" target="_blank" aria-label="Visit Anna's Instagram profile">
+                        <img src="All Social Icons - Blobs-05.svg" alt="Instagram">
+                    </a>
+                    <a href="https://www.facebook.com/annacolliton" target="_blank" aria-label="Visit Anna's Facebook page">
+                        <img src="All Social Icons - Blobs-02.svg" alt="Facebook">
+                    </a>
+                    <!-- Etsy social icon: this is the canonical Etsy URL used elsewhere -->
+                    <a href="https://www.etsy.com/shop/LittleArsonAnnie" target="_blank" aria-label="Visit Anna's Etsy shop">
+                        <img src="All Social Icons - Blobs-06.svg" alt="Shop">
+                    </a>
+                </div>
+                <h1 class="main-title">ANNA COLLITON</h1>
+            </div>
+
+            <!-- TAGLINE / NAV -->
+            <div class="tagline" style="transform: translateY(-200px); margin-bottom: 8vh;">
+                <!-- ART + DESIGN -->
+                <div class="tagline-section">
+                    <a href="https://annacollitonvisuals.com/logos-merch" target="_blank" style="text-decoration: none; color: inherit;">
+                        <span>Art + Design</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="https://annacollitonvisuals.com/logos-merch" target="_blank">Logos + merch</a>
+                        <a href="https://annacollitonvisuals.com/" target="_blank">album packaging and print design</a>
+                        <a href="https://annacollitonvisuals.com/photography" target="_blank">Photography</a>
+                        <a href="https://www.etsy.com/shop/LittleArsonAnnie" target="_blank">Shop!</a>
+                    </div>
+                </div>
+
+                <span class="tagline-divider">|</span>
+
+                <!-- MUSIC -->
+                <div class="tagline-section">
+                    <a href="https://annacollitonmusic.com/" target="_blank" style="text-decoration: none; color: inherit;">
+                        <span>Bodhrán + Irish Trad</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="https://annacollitonmusic.com/projects" target="_blank">Projects, Books, and Recordings</a>
+                        <a href="https://annacollitonmusic.com/workshops-lessons" target="_blank">workshops + lessons</a>
+                        <a href="https://annacollitonmusic.com/gigsandtours" target="_blank">gigs + tours</a>
+                        <a href="https://annacollitonmusic.com/epk" target="_blank">photo + video</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HIDDEN BUTTONS (kept for parity) -->
+            <div class="buttons-container" style="display: none;">
+                <div class="button-wrapper" data-bg="art">
+                    <a href="https://annacollitonvisuals.com/homeandshop" class="choice-button" target="_blank">art</a>
+                    <div class="dropdown-menu">
+                        <a href="https://annacollitonvisuals.com/logos-merch" target="_blank">Logos + merch</a>
+                        <a href="https://annacollitonvisuals.com/albums-print-design" target="_blank">album packaging and print design</a>
+                        <a href="https://annacollitonvisuals.com/photography" target="_blank">Photography</a>
+                        <a href="https://www.etsy.com/shop/LittleArsonAnnie" target="_blank">Shop!</a>
+                    </div>
+                </div>
+
+                <span class="or-text">or</span>
+
+                <div class="button-wrapper" data-bg="music">
+                    <a href="https://annacollitonmusic.com/" class="choice-button" target="_blank">music</a>
+                    <div class="dropdown-menu">
+                        <a href="https://annacollitonmusic.com/gigsandtours" target="_blank">gigs + tours</a>
+                        <a href="https://annacollitonmusic.com/workshops-lessons" target="_blank">workshops + lessons</a>
+                        <a href="https://annacollitonmusic.com/projects" target="_blank">Projects, Books, and Recordings</a>
+                        <a href="https://annacollitonmusic.com/epk" target="_blank">photo + video</a>
+                    </div>
+                </div>
+
+                <span class="or-text">or</span>
+
+                <div class="button-wrapper" data-bg="shop">
+                    <a href="https://www.etsy.com/shop/LittleArsonAnnie" class="choice-button" target="_blank">shop!</a>
+                </div>
+            </div>
         </div>
     </div>
 
-    <span class="tagline-divider">|</span>
+    <script>
+        const mainContainer = document.getElementById('mainContainer');
+        const buttonWrappers = document.querySelectorAll('.button-wrapper');
 
-    <!-- MUSIC -->
-    <div class="tagline-section">
-        <a href="https://annacollitonmusic.com/" target="_blank" style="text-decoration: none; color: inherit;">
-            <span>Bodhrán + Irish Trad</span>
-        </a>
-        <div class="dropdown-menu">
-            <a href="https://annacollitonmusic.com/projects" target="_blank">Projects, Books, and Recordings</a>
-            <a href="https://annacollitonmusic.com/workshops-lessons" target="_blank">workshops + lessons</a>
-            <a href="https://annacollitonmusic.com/gigsandtours" target="_blank">gigs + tours</a>
-            <a href="https://annacollitonmusic.com/epk" target="_blank">photo and video</a>
-        </div>
-    </div>
-</div>
+        buttonWrappers.forEach(function(wrapper) {
+            wrapper.addEventListener('mouseenter', function() {
+                const backgroundType = this.getAttribute('data-bg');
+                mainContainer.className = 'main-container show-' + backgroundType;
+            });
+
+            wrapper.addEventListener('mouseleave', function() {
+                mainContainer.className = 'main-container';
+            });
+        });
+    </script>
+</body>
+</html>
