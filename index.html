@@ -93,10 +93,16 @@
         }
 
         /* SHOP BUTTON */
-        .shop-button-img {
-            height: clamp(1.2rem, 3vw, 2rem);
-            width: auto;
-            display: block;
+        .shop-button-text {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .shop-button-text .small-stack {
+            display: flex;
+            flex-direction: column;
+            line-height: 0.85;
+            font-size: clamp(0.6rem, 1.5vw, 1rem);
         }
 
         /* DROPDOWN */
@@ -272,8 +278,15 @@
 
                 <!-- SHOP -->
                 <div class="tagline-section">
-                    <a href="https://www.etsy.com/shop/LittleArsonAnnie" target="_blank">
-                        <img src="Straight to the Shop Button.svg" alt="Shop" class="shop-button-img">
+                    <a href="https://www.etsy.com/shop/LittleArsonAnnie" target="_blank" style="text-decoration: none; color: inherit;">
+                        <span class="shop-button-text">
+                            <span>STRAIGHT</span>
+                            <span class="small-stack">
+                                <span>TO</span>
+                                <span>THE</span>
+                            </span>
+                            <span>SHOP</span>
+                        </span>
                     </a>
                 </div>
             </div>
