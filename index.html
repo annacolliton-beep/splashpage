@@ -107,10 +107,16 @@
         .shop-arrow {
             width: 0;
             height: 0;
-            border-top: clamp(0.6rem, 1.5vw, 1rem) solid transparent;
-            border-bottom: clamp(0.6rem, 1.5vw, 1rem) solid transparent;
-            border-left: clamp(0.6rem, 1.5vw, 1rem) solid #000;
+            border-top: clamp(0.48rem, 1.2vw, 0.8rem) solid transparent;
+            border-bottom: clamp(0.48rem, 1.2vw, 0.8rem) solid transparent;
+            border-left: clamp(0.48rem, 1.2vw, 0.8rem) solid #000;
             margin-left: 5px;
+            transform: translateY(15px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .tagline-section:hover .shop-arrow {
+            opacity: 1;
         }
 
         /* DROPDOWN */
@@ -247,7 +253,7 @@
                         <img src="All Social Icons - Blobs-02.svg" alt="Facebook">
                     </a>
                     <a href="https://www.etsy.com/shop/LittleArsonAnnie" target="_blank" aria-label="Visit Anna's Etsy shop">
-                        <img src="All Social Icons - Blobs-06.svg" alt="Shop">
+                        <img src="All Social Icons - Blobs-03.svg" alt="Shop">
                     </a>
                 </div>
                 <h1 class="main-title">ANNA COLLITON</h1>
