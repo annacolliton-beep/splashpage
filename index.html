@@ -104,6 +104,14 @@
             line-height: 0.85;
             font-size: clamp(0.6rem, 1.5vw, 1rem);
         }
+        .shop-arrow {
+            width: 0;
+            height: 0;
+            border-top: clamp(0.6rem, 1.5vw, 1rem) solid transparent;
+            border-bottom: clamp(0.6rem, 1.5vw, 1rem) solid transparent;
+            border-left: clamp(0.6rem, 1.5vw, 1rem) solid #000;
+            margin-left: 5px;
+        }
 
         /* DROPDOWN */
         .dropdown-menu {
@@ -286,6 +294,7 @@
                                 <span>THE</span>
                             </span>
                             <span>SHOP</span>
+                            <span class="shop-arrow"></span>
                         </span>
                     </a>
                 </div>
