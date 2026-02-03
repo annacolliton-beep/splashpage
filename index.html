@@ -197,9 +197,9 @@
         /* MAILING LIST POPUP */
         .mailing-list-popup {
             position: absolute;
-            bottom: calc(100% + 50px);
+            top: 100%;
             left: 50%;
-            transform: translateX(-50%) translateY(-15px) scale(0.95);
+            transform: translateX(-50%) translateY(15px) scale(0.95);
             opacity: 0;
             visibility: hidden;
             transition: all 0.4s ease;
@@ -210,7 +210,7 @@
             z-index: 100;
             pointer-events: none;
             white-space: nowrap;
-            margin-bottom: 15px;
+            margin-top: 15px;
         }
         .social-wrapper:hover .mailing-list-popup {
             opacity: 1;
@@ -332,20 +332,6 @@
     <div class="main-container" id="mainContainer">
         <div class="content-overlay">
             <div class="social-wrapper" style="margin-bottom: 8vh; transform: translateY(-100px);">
-                <!-- MAILING LIST POPUP -->
-                <div class="mailing-list-popup">
-                    <h2 class="popup-title">updates in your inbox!</h2>
-                    <form class="popup-form" onsubmit="handleMailingListSubmit(event)">
-                        <input 
-                            type="email" 
-                            placeholder="Your email" 
-                            required 
-                            aria-label="Email address"
-                        >
-                        <button type="submit" class="popup-submit">Subscribe</button>
-                    </form>
-                </div>
-
                 <div class="social-dropdown">
                     <a href="https://www.linkedin.com/in/annacolliton" target="_blank" aria-label="Visit Anna's LinkedIn profile">
                         <img src="All Social Icons - Blobs-01.svg" alt="LinkedIn">
@@ -363,6 +349,21 @@
                         <img src="All Social Icons - Blobs-03.svg" alt="Shop">
                     </a>
                 </div>
+
+                <!-- MAILING LIST POPUP -->
+                <div class="mailing-list-popup">
+                    <h2 class="popup-title">updates in your inbox!</h2>
+                    <form class="popup-form" onsubmit="handleMailingListSubmit(event)">
+                        <input 
+                            type="email" 
+                            placeholder="Your email" 
+                            required 
+                            aria-label="Email address"
+                        >
+                        <button type="submit" class="popup-submit">Subscribe</button>
+                    </form>
+                </div>
+
                 <h1 class="main-title">ANNA COLLITON</h1>
             </div>
 
