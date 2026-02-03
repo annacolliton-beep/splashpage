@@ -483,6 +483,8 @@
         // Add hover listeners to tagline sections
         const taglineSections = document.querySelectorAll('.tagline-section');
         const taglineContainer = document.querySelector('.tagline');
+        const mainTitle = document.querySelector('.main-title');
+        const socialWrapper = document.querySelector('.social-wrapper');
         const creamColor = '#FFFEF9';
         const blackColor = '#000';
         let currentColor = defaultBG;
@@ -496,38 +498,45 @@
                 } else if (index === 2) { // Shop
                     currentColor = colors.shop;
                 }
-                document.querySelector('.main-container').style.backgroundColor = currentColor;
-                // Change all text to cream when background is colored
-                document.querySelector('.main-title').style.color = creamColor;
-                document.querySelectorAll('.tagline-section a').forEach(a => {
-                    a.style.color = creamColor;
-                });
+                applyColorChange(currentColor);
             });
         });
 
-        // Keep the color when hovering over the tagline container (including dividers)
-        taglineContainer.addEventListener('mouseleave', () => {
+        function applyColorChange(color) {
+            document.querySelector('.main-container').style.backgroundColor = color;
+            // Change all text to cream when background is colored
+            document.querySelector('.main-title').style.color = creamColor;
+            // Change dividers to cream
+            document.querySelectorAll('.tagline-divider').forEach(divider => {
+                divider.style.color = creamColor;
+            });
+            document.querySelectorAll('.tagline-section a').forEach(a => {
+                a.style.color = creamColor;
+            });
+        }
+
+        function resetToDefault() {
             document.querySelector('.main-container').style.backgroundColor = defaultBG;
-            // Change text back to black
             document.querySelector('.main-title').style.color = blackColor;
+            // Reset dividers to default
+            document.querySelectorAll('.tagline-divider').forEach(divider => {
+                divider.style.color = '';
+            });
             document.querySelectorAll('.tagline-section a').forEach(a => {
                 a.style.color = 'inherit';
             });
             currentColor = defaultBG;
+        }
+
+        // Create a zone that includes the header, buttons, and social icons
+        const interactiveZone = document.querySelector('.content-overlay');
+        
+        interactiveZone.addEventListener('mouseleave', () => {
+            resetToDefault();
         });
 
-        // Also handle the title hover separately so it doesn't reset when leaving
-        const mainTitle = document.querySelector('.main-title');
-        mainTitle.addEventListener('mouseenter', () => {
-            // Keep the current color
-        });
-        mainTitle.addEventListener('mouseleave', () => {
-            document.querySelector('.main-container').style.backgroundColor = defaultBG;
-            document.querySelector('.main-title').style.color = blackColor;
-            document.querySelectorAll('.tagline-section a').forEach(a => {
-                a.style.color = 'inherit';
-            });
-            currentColor = defaultBG;
+        interactiveZone.addEventListener('mouseenter', () => {
+            // Keep the current color when re-entering the zone
         });
 
         function handleMailingListSubmit(event) {
