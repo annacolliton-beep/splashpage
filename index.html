@@ -510,8 +510,18 @@
             document.querySelectorAll('.tagline-divider').forEach(divider => {
                 divider.style.color = creamColor;
             });
+            // Change menu text to cream
             document.querySelectorAll('.tagline-section a').forEach(a => {
                 a.style.color = creamColor;
+            });
+            // Change social icons to cream (change their opacity/filter)
+            document.querySelectorAll('.social-dropdown img').forEach(img => {
+                img.style.filter = 'brightness(0) invert(1)';
+                img.style.opacity = '0.9';
+            });
+            // Change shop arrow to cream
+            document.querySelectorAll('.shop-arrow').forEach(arrow => {
+                arrow.style.borderLeftColor = creamColor;
             });
         }
 
@@ -522,8 +532,18 @@
             document.querySelectorAll('.tagline-divider').forEach(divider => {
                 divider.style.color = '';
             });
+            // Reset menu text
             document.querySelectorAll('.tagline-section a').forEach(a => {
                 a.style.color = 'inherit';
+            });
+            // Reset social icons
+            document.querySelectorAll('.social-dropdown img').forEach(img => {
+                img.style.filter = '';
+                img.style.opacity = '';
+            });
+            // Reset shop arrow
+            document.querySelectorAll('.shop-arrow').forEach(arrow => {
+                arrow.style.borderLeftColor = '';
             });
             currentColor = defaultBG;
         }
