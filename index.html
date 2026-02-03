@@ -163,13 +163,19 @@
             margin-bottom: 50px; 
             pointer-events: auto; 
         }
+        .social-wrapper:hover .social-dropdown {
+            opacity: 1; 
+            visibility: visible; 
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
+        }
         .social-dropdown {
             position: absolute; 
             bottom: 100%; 
             left: 50%;
-            transform: translateX(-50%) translateY(15px);
-            opacity: 0; 
-            visibility: hidden; 
+            transform: translateX(-50%) translateY(0);
+            opacity: 1; 
+            visibility: visible; 
             transition: all 0.4s ease;
             display: flex; 
             gap: 15px; 
@@ -178,11 +184,7 @@
             padding: 10px 0; 
             margin-bottom: 10px;
             white-space: nowrap;
-        }
-        .social-wrapper:hover .social-dropdown {
-            opacity: 1; 
-            visibility: visible; 
-            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
         }
         .social-dropdown a { 
             transition: all 0.3s ease; 
@@ -550,9 +552,24 @@
 
         // Create a zone that includes the header, buttons, and social icons
         const interactiveZone = document.querySelector('.content-overlay');
+        const socialWrapper = document.querySelector('.social-wrapper');
+        const taglineDiv = document.querySelector('.tagline');
         
-        interactiveZone.addEventListener('mouseleave', () => {
-            resetToDefault();
+        // Create an invisible container that spans all three elements
+        const zone = document.createElement('div');
+        zone.style.position = 'absolute';
+        zone.style.pointerEvents = 'auto';
+        zone.style.zIndex = '5';
+        
+        interactiveZone.addEventListener('mouseleave', (e) => {
+            // Only reset if we're truly leaving the zone area
+            const contentOverlay = document.querySelector('.content-overlay');
+            const rect = contentOverlay.getBoundingClientRect();
+            
+            if (e.clientY < rect.top || e.clientY > rect.bottom ||
+                e.clientX < rect.left || e.clientX > rect.right) {
+                resetToDefault();
+            }
         });
 
         interactiveZone.addEventListener('mouseenter', () => {
