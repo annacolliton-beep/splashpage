@@ -88,37 +88,32 @@
         .tagline-section:hover { 
             transform: translateY(-3px); 
         }
-        /* Music - Moss Green */
+        /* Music - Rich Dark Green */
         .tagline-section:nth-child(1):hover {
-            background: #6B8E23 !important;
             color: #fff;
         }
         .tagline-section:nth-child(1):hover a {
             color: #fff !important;
         }
-        .tagline-section:nth-child(1):hover .dropdown-menu {
-            background: #6B8E23;
+        .tagline-section:nth-child(1) {
+            transition: all 0.3s ease;
         }
-        .tagline-section:nth-child(1):hover .dropdown-menu a {
-            color: #fff;
+        /* Change main container background on Music hover */
+        .tagline-section:nth-child(1):hover ~ .main-title,
+        .tagline:has(.tagline-section:nth-child(1):hover) {
+            background: #2D5016;
         }
-        /* Art + Design - Deep Desaturated Blue */
+        
+        /* Art + Design - Rich Dark Blue */
         .tagline-section:nth-child(3):hover {
-            background: #4A5E7F !important;
             color: #fff;
         }
         .tagline-section:nth-child(3):hover a {
             color: #fff !important;
         }
-        .tagline-section:nth-child(3):hover .dropdown-menu {
-            background: #4A5E7F;
-        }
-        .tagline-section:nth-child(3):hover .dropdown-menu a {
-            color: #fff;
-        }
-        /* Shop - Bold Orange */
+        
+        /* Shop - Rich Dark Orange */
         .tagline-section:nth-child(5):hover {
-            background: #FF6B35 !important;
             color: #fff;
         }
         .tagline-section:nth-child(5):hover a {
@@ -508,6 +503,40 @@
 
     <script>
         const FORMSPREE_ID = 'xeeznykn';
+        const defaultBG = '#FFFEF9';
+        const colors = {
+            music: '#1B4D0E',      // Rich dark green
+            art: '#1A3A52',        // Rich dark blue
+            shop: '#C84B1F'        // Rich dark orange
+        };
+
+        // Add hover listeners to tagline sections
+        const taglineSections = document.querySelectorAll('.tagline-section');
+        
+        taglineSections.forEach((section, index) => {
+            if (index === 0) { // Music
+                section.addEventListener('mouseenter', () => {
+                    document.querySelector('.main-container').style.backgroundColor = colors.music;
+                });
+                section.addEventListener('mouseleave', () => {
+                    document.querySelector('.main-container').style.backgroundColor = defaultBG;
+                });
+            } else if (index === 2) { // Art + Design
+                section.addEventListener('mouseenter', () => {
+                    document.querySelector('.main-container').style.backgroundColor = colors.art;
+                });
+                section.addEventListener('mouseleave', () => {
+                    document.querySelector('.main-container').style.backgroundColor = defaultBG;
+                });
+            } else if (index === 4) { // Shop
+                section.addEventListener('mouseenter', () => {
+                    document.querySelector('.main-container').style.backgroundColor = colors.shop;
+                });
+                section.addEventListener('mouseleave', () => {
+                    document.querySelector('.main-container').style.backgroundColor = defaultBG;
+                });
+            }
+        });
 
         function handleMailingListSubmit(event) {
             event.preventDefault();
