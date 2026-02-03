@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -478,9 +477,9 @@
         const FORMSPREE_ID = 'xeeznykn';
         const defaultBG = '#FFFEF9';
         const colors = {
-            music: '#5A6B4D',      // Muted mossy green
-            art: '#3D5A73',        // Muted slate blue
-            shop: '#7B4423'        // Muted burnt orange
+            music: '#1B4D0E',      // Rich dark green
+            art: '#1A3A52',        // Rich dark blue
+            shop: '#8B2F0A'        // Deeper rich dark orange
         };
 
         // Add hover listeners to tagline sections
@@ -511,27 +510,6 @@
             const mainContainer = document.querySelector('.main-container');
             mainContainer.style.backgroundColor = color;
             
-            // Add background image for Music (green) - overlay blend to show both green and photo
-            if (color === colors.music) {
-                mainContainer.style.backgroundImage = "url('Anna-Colliton-2.jpg')";
-                mainContainer.style.backgroundSize = 'cover';
-                mainContainer.style.backgroundPosition = 'center';
-                mainContainer.style.backgroundBlendMode = 'overlay';
-                mainContainer.style.opacity = '1';
-            } 
-            // Add background image for Art + Design (blue) - overlay blend
-            else if (color === colors.art) {
-                mainContainer.style.backgroundImage = "url('Artboard 10.jpg')";
-                mainContainer.style.backgroundSize = 'cover';
-                mainContainer.style.backgroundPosition = 'center';
-                mainContainer.style.backgroundBlendMode = 'overlay';
-                mainContainer.style.opacity = '1';
-            }
-            else {
-                mainContainer.style.backgroundImage = 'none';
-                mainContainer.style.backgroundBlendMode = 'normal';
-            }
-            
             // Change all text to cream when background is colored
             document.querySelector('.main-title').style.color = creamColor;
             // Change dividers to cream
@@ -558,8 +536,6 @@
             if (!hasHoveredMenu) {
                 const mainContainer = document.querySelector('.main-container');
                 mainContainer.style.backgroundColor = defaultBG;
-                mainContainer.style.backgroundImage = 'none';
-                mainContainer.style.backgroundBlendMode = 'normal';
                 document.querySelector('.main-title').style.color = blackColor;
                 // Reset dividers to default
                 document.querySelectorAll('.tagline-divider').forEach(divider => {
