@@ -244,8 +244,8 @@
             line-height: 1.3;
         }
         .popup-subtitle {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
+            font-family: "tomarik-brush", sans-serif;
+            font-size: 1rem;
             color: #FFFEF9;
             display: block;
             margin: 0 0 20px 0;
@@ -489,24 +489,64 @@
     </div>
 
     <script>
+        const MAILCHIMP_API_KEY = '91cc23856a4bfea1a178eb4432e24e18-us12';
+        const MAILCHIMP_AUDIENCE_ID = '9cb5dfe3c7';
+        const MAILCHIMP_SERVER = 'us12';
+
         function handleMailingListSubmit(event) {
             event.preventDefault();
             
             const form = event.target;
             const email = form.querySelector('input[type="email"]').value;
+            const submitButton = form.querySelector('.popup-submit');
             
-            // Replace this with your actual mailing list integration
-            // Examples: Mailchimp, ConvertKit, EmailOctopus, etc.
-            console.log('Email submitted:', email);
+            // Disable button and show loading state
+            submitButton.disabled = true;
+            submitButton.textContent = 'Subscribing...';
             
-            // Show success message (optional)
-            alert('Thanks for subscribing! 🎉');
+            // Send to Mailchimp
+            addToMailchimp(email, submitButton, form);
+        }
+
+        function addToMailchimp(email, submitButton, form) {
+            // Mailchimp API endpoint
+            const url = `https://${MAILCHIMP_SERVER}.api.mailchimp.com/3.0/lists/${MAILCHIMP_AUDIENCE_ID}/members`;
             
-            // Clear the form
-            form.reset();
+            const data = {
+                email_address: email,
+                status: 'subscribed'
+            };
             
-            // Close the popup
-            closeMailingListPopup();
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Basic ' + btoa('anystring:' + MAILCHIMP_API_KEY),
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.id || data.status === 'subscribed') {
+                    // Success!
+                    alert('Thanks for subscribing! 🎉');
+                    form.reset();
+                    closeMailingListPopup();
+                } else if (data.title === 'Member Exists') {
+                    alert('You\'re already subscribed!');
+                    closeMailingListPopup();
+                } else {
+                    alert('Something went wrong. Please try again.');
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Subscribe';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Something went wrong. Please try again.');
+                submitButton.disabled = false;
+                submitButton.textContent = 'Subscribe';
+            });
         }
 
         function closeMailingListPopup() {
