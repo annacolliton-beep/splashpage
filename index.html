@@ -490,9 +490,11 @@
         const creamColor = '#FFFEF9';
         const blackColor = '#000';
         let currentColor = defaultBG;
+        let hasHoveredMenu = false;
 
         taglineSections.forEach((section, index) => {
             section.addEventListener('mouseenter', () => {
+                hasHoveredMenu = true;
                 if (index === 0) { // Music
                     currentColor = colors.music;
                 } else if (index === 1) { // Art + Design
@@ -528,26 +530,29 @@
         }
 
         function resetToDefault() {
-            document.querySelector('.main-container').style.backgroundColor = defaultBG;
-            document.querySelector('.main-title').style.color = blackColor;
-            // Reset dividers to default
-            document.querySelectorAll('.tagline-divider').forEach(divider => {
-                divider.style.color = '';
-            });
-            // Reset menu text
-            document.querySelectorAll('.tagline-section a').forEach(a => {
-                a.style.color = 'inherit';
-            });
-            // Reset social icons
-            document.querySelectorAll('.social-dropdown img').forEach(img => {
-                img.style.filter = '';
-                img.style.opacity = '';
-            });
-            // Reset shop arrow
-            document.querySelectorAll('.shop-arrow').forEach(arrow => {
-                arrow.style.borderLeftColor = '';
-            });
-            currentColor = defaultBG;
+            // Only reset if we've never hovered over the menu
+            if (!hasHoveredMenu) {
+                document.querySelector('.main-container').style.backgroundColor = defaultBG;
+                document.querySelector('.main-title').style.color = blackColor;
+                // Reset dividers to default
+                document.querySelectorAll('.tagline-divider').forEach(divider => {
+                    divider.style.color = '';
+                });
+                // Reset menu text
+                document.querySelectorAll('.tagline-section a').forEach(a => {
+                    a.style.color = 'inherit';
+                });
+                // Reset social icons
+                document.querySelectorAll('.social-dropdown img').forEach(img => {
+                    img.style.filter = '';
+                    img.style.opacity = '';
+                });
+                // Reset shop arrow
+                document.querySelectorAll('.shop-arrow').forEach(arrow => {
+                    arrow.style.borderLeftColor = '';
+                });
+                currentColor = defaultBG;
+            }
         }
 
         // Create a zone that includes the header, buttons, and social icons
@@ -562,12 +567,12 @@
         zone.style.zIndex = '5';
         
         interactiveZone.addEventListener('mouseleave', (e) => {
-            // Only reset if we're truly leaving the zone area
+            // Only reset if we're truly leaving the zone area AND haven't hovered menu yet
             const contentOverlay = document.querySelector('.content-overlay');
             const rect = contentOverlay.getBoundingClientRect();
             
-            if (e.clientY < rect.top || e.clientY > rect.bottom ||
-                e.clientX < rect.left || e.clientX > rect.right) {
+            if ((e.clientY < rect.top || e.clientY > rect.bottom ||
+                e.clientX < rect.left || e.clientX > rect.right) && !hasHoveredMenu) {
                 resetToDefault();
             }
         });
