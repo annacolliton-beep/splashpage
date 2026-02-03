@@ -359,7 +359,7 @@
                 transform: translate(-50%, 0) !important;
                 opacity: 1 !important;
                 visibility: visible !important;
-                pointer-events: auto;
+                pointer-events: auto !important;
                 width: 90%;
                 max-width: 400px;
                 padding: 20px 20px 5px 20px !important;
@@ -367,6 +367,9 @@
                 height: auto !important;
                 max-height: 220px !important;
                 overflow: hidden !important;
+            }
+            .mailing-list-popup * {
+                pointer-events: auto !important;
             }
             .mailing-list-popup.hidden {
                 opacity: 0 !important;
