@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -517,7 +518,16 @@
                 mainContainer.style.backgroundPosition = 'center';
                 mainContainer.style.backgroundBlendMode = 'overlay';
                 mainContainer.style.opacity = '1';
-            } else {
+            } 
+            // Add background image for Art + Design (blue) - overlay blend
+            else if (color === colors.art) {
+                mainContainer.style.backgroundImage = "url('Artboard 10.jpg')";
+                mainContainer.style.backgroundSize = 'cover';
+                mainContainer.style.backgroundPosition = 'center';
+                mainContainer.style.backgroundBlendMode = 'overlay';
+                mainContainer.style.opacity = '1';
+            }
+            else {
                 mainContainer.style.backgroundImage = 'none';
                 mainContainer.style.backgroundBlendMode = 'normal';
             }
