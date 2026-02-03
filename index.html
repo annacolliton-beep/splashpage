@@ -210,24 +210,10 @@
             visibility: visible;
             transition: all 0.3s ease;
         }
-        .mailing-list-popup::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.15);
-            z-index: -1;
-            backdrop-filter: blur(8px);
-        }
         .mailing-list-popup.hidden {
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
-        }
-        .mailing-list-popup.hidden::before {
-            display: none;
         }
         .popup-close {
             position: absolute;
@@ -301,7 +287,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.6);
             z-index: 1000;
             opacity: 0;
             visibility: hidden;
@@ -473,20 +459,6 @@
 
             <!-- TAGLINE / NAV -->
             <div class="tagline" style="transform: translateY(-200px); margin-bottom: 8vh;">
-                <!-- ART + DESIGN -->
-                <div class="tagline-section">
-                    <a href="https://annacollitonvisuals.com/logos-merch" target="_blank" style="text-decoration: none; color: inherit;">
-                        <span>Art + Design</span>
-                    </a>
-                    <div class="dropdown-menu">
-                        <a href="https://annacollitonvisuals.com/logos-merch" target="_blank">Logos + merch</a>
-                        <a href="https://annacollitonvisuals.com/" target="_blank">albums + print design</a>
-                        <a href="https://annacollitonvisuals.com/photography" target="_blank">Photography</a>
-                    </div>
-                </div>
-
-                <span class="tagline-divider">|</span>
-
                 <!-- MUSIC -->
                 <div class="tagline-section">
                     <a href="https://annacollitonmusic.com/" target="_blank" style="text-decoration: none; color: inherit;">
@@ -497,6 +469,20 @@
                         <a href="https://annacollitonmusic.com/workshops-lessons" target="_blank">workshops + lessons</a>
                         <a href="https://annacollitonmusic.com/projects" target="_blank">Projects</a>
                         <a href="https://annacollitonmusic.com/epk" target="_blank">media + EPK</a>
+                    </div>
+                </div>
+
+                <span class="tagline-divider">|</span>
+
+                <!-- ART + DESIGN -->
+                <div class="tagline-section">
+                    <a href="https://annacollitonvisuals.com/logos-merch" target="_blank" style="text-decoration: none; color: inherit;">
+                        <span>Art + Design</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="https://annacollitonvisuals.com/logos-merch" target="_blank">Logos + merch</a>
+                        <a href="https://annacollitonvisuals.com/" target="_blank">albums + print design</a>
+                        <a href="https://annacollitonvisuals.com/photography" target="_blank">Photography</a>
                     </div>
                 </div>
 
