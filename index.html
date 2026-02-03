@@ -158,7 +158,11 @@
         .social-wrapper { 
             position: relative; 
             margin-bottom: 50px; 
-            pointer-events: auto; 
+            pointer-events: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
         }
         .social-dropdown {
             position: absolute; 
@@ -196,26 +200,23 @@
 
         /* MAILING LIST POPUP */
         .mailing-list-popup {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%) translateY(15px) scale(0.95);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s ease;
+            position: static;
+            transform: none;
+            opacity: 1;
+            visibility: visible;
             background: #fff;
             padding: 15px 20px;
             border-radius: 10px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
             z-index: 100;
-            pointer-events: none;
+            pointer-events: auto;
             white-space: nowrap;
-            margin-top: 15px;
+            margin: 0;
         }
         .social-wrapper:hover .mailing-list-popup {
             opacity: 1;
             visibility: visible;
-            transform: translateX(-50%) translateY(0) scale(1);
+            transform: none;
             pointer-events: auto;
         }
         .popup-title {
