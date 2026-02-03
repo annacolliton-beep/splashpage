@@ -482,30 +482,35 @@
 
         // Add hover listeners to tagline sections
         const taglineSections = document.querySelectorAll('.tagline-section');
+        const creamColor = '#FFFEF9';
+        const blackColor = '#000';
         
         taglineSections.forEach((section, index) => {
-            if (index === 0) { // Music
-                section.addEventListener('mouseenter', () => {
-                    document.querySelector('.main-container').style.backgroundColor = colors.music;
+            section.addEventListener('mouseenter', () => {
+                let color = defaultBG;
+                if (index === 0) { // Music
+                    color = colors.music;
+                } else if (index === 1) { // Art + Design
+                    color = colors.art;
+                } else if (index === 2) { // Shop
+                    color = colors.shop;
+                }
+                document.querySelector('.main-container').style.backgroundColor = color;
+                // Change all text to cream when background is colored
+                document.querySelector('.main-title').style.color = creamColor;
+                document.querySelectorAll('.tagline-section a').forEach(a => {
+                    a.style.color = creamColor;
                 });
-                section.addEventListener('mouseleave', () => {
-                    document.querySelector('.main-container').style.backgroundColor = defaultBG;
+            });
+            
+            section.addEventListener('mouseleave', () => {
+                document.querySelector('.main-container').style.backgroundColor = defaultBG;
+                // Change text back to black
+                document.querySelector('.main-title').style.color = blackColor;
+                document.querySelectorAll('.tagline-section a').forEach(a => {
+                    a.style.color = 'inherit';
                 });
-            } else if (index === 2) { // Art + Design
-                section.addEventListener('mouseenter', () => {
-                    document.querySelector('.main-container').style.backgroundColor = colors.art;
-                });
-                section.addEventListener('mouseleave', () => {
-                    document.querySelector('.main-container').style.backgroundColor = defaultBG;
-                });
-            } else if (index === 4) { // Shop
-                section.addEventListener('mouseenter', () => {
-                    document.querySelector('.main-container').style.backgroundColor = colors.shop;
-                });
-                section.addEventListener('mouseleave', () => {
-                    document.querySelector('.main-container').style.backgroundColor = defaultBG;
-                });
-            }
+            });
         });
 
         function handleMailingListSubmit(event) {
