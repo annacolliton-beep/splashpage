@@ -197,9 +197,9 @@
         /* MAILING LIST POPUP */
         .mailing-list-popup {
             position: absolute;
-            bottom: 120px;
+            bottom: 100%;
             left: 50%;
-            transform: translateX(-50%) scale(0.95);
+            transform: translateX(-50%) translateY(-15px) scale(0.95);
             opacity: 0;
             visibility: hidden;
             transition: all 0.4s ease;
@@ -210,11 +210,12 @@
             z-index: 100;
             pointer-events: none;
             white-space: nowrap;
+            margin-bottom: 15px;
         }
         .social-wrapper:hover .mailing-list-popup {
             opacity: 1;
             visibility: visible;
-            transform: translateX(-50%) scale(1);
+            transform: translateX(-50%) translateY(0) scale(1);
             pointer-events: auto;
         }
         .popup-title {
