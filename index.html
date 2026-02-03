@@ -174,6 +174,7 @@
             align-items: center;
             padding: 10px 0; 
             margin-bottom: 10px;
+            flex-wrap: wrap;
         }
         .social-wrapper:hover .social-dropdown {
             opacity: 1; 
@@ -196,54 +197,39 @@
 
         /* MAILING LIST POPUP */
         .mailing-list-popup {
-            position: absolute;
-            top: 50%;
-            right: -380px;
-            transform: translateY(-50%) scale(0.8);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s ease;
-            background: #FFFEF9;
-            padding: 12px 20px;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            z-index: 100;
-            pointer-events: none;
-            white-space: nowrap;
-            margin: 0;
             display: flex;
             align-items: center;
             gap: 10px;
-        }
-        .social-wrapper:hover .mailing-list-popup {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(-50%) scale(0.8);
-            pointer-events: auto;
+            background: #FFFEF9;
+            padding: 12px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            white-space: nowrap;
+            transform: scale(0.8);
+            transform-origin: center;
         }
         .popup-title {
             font-family: "tomarik-brush", sans-serif;
-            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            font-size: 1rem;
             color: #000;
             display: inline-block;
-            margin-right: 20px;
-            vertical-align: middle;
+            margin: 0;
+            white-space: nowrap;
         }
         .popup-form {
             display: inline-flex;
             gap: 8px;
             align-items: center;
-            vertical-align: middle;
             margin: 0;
         }
         .popup-form input {
-            padding: 8px 12px;
+            padding: 6px 10px;
             border: 1px solid #ddd;
-            border-radius: 6px;
+            border-radius: 4px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             transition: all 0.3s ease;
-            width: 200px;
+            width: 150px;
         }
         .popup-form input:focus {
             outline: none;
@@ -254,13 +240,13 @@
             color: #aaa;
         }
         .popup-submit {
-            padding: 8px 16px;
+            padding: 6px 12px;
             background: #000;
             color: #fff;
             border: none;
-            border-radius: 6px;
+            border-radius: 4px;
             font-family: "tomarik-brush", sans-serif;
-            font-size: clamp(0.8rem, 2vw, 1rem);
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -349,20 +335,20 @@
                     <a href="https://www.etsy.com/shop/LittleArsonAnnie" target="_blank" aria-label="Visit Anna's Etsy shop">
                         <img src="All Social Icons - Blobs-03.svg" alt="Shop">
                     </a>
-                </div>
-
-                <!-- MAILING LIST POPUP -->
-                <div class="mailing-list-popup">
-                    <h2 class="popup-title">updates in your inbox!</h2>
-                    <form class="popup-form" onsubmit="handleMailingListSubmit(event)">
-                        <input 
-                            type="email" 
-                            placeholder="Your email" 
-                            required 
-                            aria-label="Email address"
-                        >
-                        <button type="submit" class="popup-submit">Subscribe</button>
-                    </form>
+                    
+                    <!-- MAILING LIST POPUP -->
+                    <div class="mailing-list-popup">
+                        <h2 class="popup-title">news in your inbox</h2>
+                        <form class="popup-form" onsubmit="handleMailingListSubmit(event)">
+                            <input 
+                                type="email" 
+                                placeholder="your email" 
+                                required 
+                                aria-label="Email address"
+                            >
+                            <button type="submit" class="popup-submit">→</button>
+                        </form>
+                    </div>
                 </div>
 
                 <h1 class="main-title">ANNA COLLITON</h1>
