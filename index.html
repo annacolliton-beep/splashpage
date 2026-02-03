@@ -507,7 +507,22 @@
         });
 
         function applyColorChange(color) {
-            document.querySelector('.main-container').style.backgroundColor = color;
+            const mainContainer = document.querySelector('.main-container');
+            mainContainer.style.backgroundColor = color;
+            
+            // Add background image for Music (green)
+            if (color === colors.music) {
+                mainContainer.style.backgroundImage = "url('Anna-Colliton-2.jpg')";
+                mainContainer.style.backgroundSize = 'cover';
+                mainContainer.style.backgroundPosition = 'center';
+                mainContainer.style.backgroundBlendMode = 'multiply';
+                mainContainer.style.opacity = '0.3';
+            } else {
+                mainContainer.style.backgroundImage = 'none';
+                mainContainer.style.backgroundBlendMode = 'normal';
+                mainContainer.style.opacity = '1';
+            }
+            
             // Change all text to cream when background is colored
             document.querySelector('.main-title').style.color = creamColor;
             // Change dividers to cream
@@ -518,7 +533,7 @@
             document.querySelectorAll('.tagline-section a').forEach(a => {
                 a.style.color = creamColor;
             });
-            // Change social icons to cream (change their opacity/filter)
+            // Change social icons to cream
             document.querySelectorAll('.social-dropdown img').forEach(img => {
                 img.style.filter = 'brightness(0) invert(1)';
                 img.style.opacity = '0.9';
@@ -532,7 +547,10 @@
         function resetToDefault() {
             // Only reset if we've never hovered over the menu
             if (!hasHoveredMenu) {
-                document.querySelector('.main-container').style.backgroundColor = defaultBG;
+                const mainContainer = document.querySelector('.main-container');
+                mainContainer.style.backgroundColor = defaultBG;
+                mainContainer.style.backgroundImage = 'none';
+                mainContainer.style.opacity = '1';
                 document.querySelector('.main-title').style.color = blackColor;
                 // Reset dividers to default
                 document.querySelectorAll('.tagline-divider').forEach(divider => {
