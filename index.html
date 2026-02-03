@@ -32,7 +32,8 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(255, 248, 231, 0.3);
+            background: transparent;
+            transition: background 0.3s ease;
         }
 
         /* CONTENT */
@@ -87,37 +88,6 @@
         }
         .tagline-section:hover { 
             transform: translateY(-3px); 
-        }
-        /* Music - Rich Dark Green */
-        .tagline-section:nth-child(1):hover {
-            color: #fff;
-        }
-        .tagline-section:nth-child(1):hover a {
-            color: #fff !important;
-        }
-        .tagline-section:nth-child(1) {
-            transition: all 0.3s ease;
-        }
-        /* Change main container background on Music hover */
-        .tagline-section:nth-child(1):hover ~ .main-title,
-        .tagline:has(.tagline-section:nth-child(1):hover) {
-            background: #2D5016;
-        }
-        
-        /* Art + Design - Rich Dark Blue */
-        .tagline-section:nth-child(3):hover {
-            color: #fff;
-        }
-        .tagline-section:nth-child(3):hover a {
-            color: #fff !important;
-        }
-        
-        /* Shop - Rich Dark Orange */
-        .tagline-section:nth-child(5):hover {
-            color: #fff;
-        }
-        .tagline-section:nth-child(5):hover a {
-            color: #fff !important;
         }
         .tagline-divider { 
             color: #333; 
