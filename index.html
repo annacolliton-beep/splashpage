@@ -78,13 +78,51 @@
             position: relative; 
             cursor: pointer; 
             transition: all 0.3s ease;
-            padding: 10px 15px; 
+            padding: 15px 20px; 
             display: flex; 
             flex-direction: column; 
             align-items: center;
+            border-radius: 8px;
+            background: transparent;
         }
         .tagline-section:hover { 
             transform: translateY(-3px); 
+        }
+        /* Music - Moss Green */
+        .tagline-section:nth-child(1):hover {
+            background: #6B8E23 !important;
+            color: #fff;
+        }
+        .tagline-section:nth-child(1):hover a {
+            color: #fff !important;
+        }
+        .tagline-section:nth-child(1):hover .dropdown-menu {
+            background: #6B8E23;
+        }
+        .tagline-section:nth-child(1):hover .dropdown-menu a {
+            color: #fff;
+        }
+        /* Art + Design - Deep Desaturated Blue */
+        .tagline-section:nth-child(3):hover {
+            background: #4A5E7F !important;
+            color: #fff;
+        }
+        .tagline-section:nth-child(3):hover a {
+            color: #fff !important;
+        }
+        .tagline-section:nth-child(3):hover .dropdown-menu {
+            background: #4A5E7F;
+        }
+        .tagline-section:nth-child(3):hover .dropdown-menu a {
+            color: #fff;
+        }
+        /* Shop - Bold Orange */
+        .tagline-section:nth-child(5):hover {
+            background: #FF6B35 !important;
+            color: #fff;
+        }
+        .tagline-section:nth-child(5):hover a {
+            color: #fff !important;
         }
         .tagline-divider { 
             color: #333; 
@@ -249,7 +287,8 @@
             font-size: 1rem;
             color: #FFFEF9;
             display: block;
-            margin: 0 0 20px 0;
+            margin: 0 0 10px 0;
+            margin-top: -8px;
             text-align: center;
             line-height: 1.4;
             font-weight: 300;
@@ -410,7 +449,7 @@
                 <form class="popup-form" onsubmit="handleMailingListSubmit(event)">
                     <input 
                         type="email" 
-                        placeholder="your email" 
+                        placeholder="Email" 
                         required 
                         aria-label="Email address"
                     >
