@@ -200,10 +200,11 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            background: #000;
+            background: transparent;
             padding: 5px 20px;
+            border: 2px solid #000;
             border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: none;
             white-space: nowrap;
             order: 99;
             min-height: 50px;
@@ -211,7 +212,7 @@
         .popup-title {
             font-family: "tomarik-brush", sans-serif;
             font-size: 0.95rem;
-            color: #fff;
+            color: #000;
             display: inline;
             margin: 0;
             white-space: nowrap;
@@ -224,36 +225,40 @@
         }
         .popup-form input {
             padding: 6px 10px;
-            border: 1px solid #555;
+            border: none;
             border-radius: 4px;
             font-family: 'Montserrat', sans-serif;
             font-size: 0.8rem;
             transition: all 0.3s ease;
             width: 150px;
-            background: #fff;
-            color: #000;
+            background: #000;
+            color: #fff;
         }
         .popup-form input:focus {
             outline: none;
             border-color: #fff;
-            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
         }
         .popup-form input::placeholder {
             color: #999;
         }
         .popup-submit {
             padding: 6px 12px;
-            background: #fff;
-            color: #000;
-            border: none;
+            background: transparent;
+            color: #fff;
+            border: 2px solid #000;
             border-radius: 4px;
             font-family: "tomarik-brush", sans-serif;
             font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            height: 29px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .popup-submit:hover {
-            background: #ddd;
+            background: #000;
             transform: translateY(-2px);
         }
 
