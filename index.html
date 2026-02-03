@@ -194,6 +194,76 @@
             display: block; 
         }
 
+        /* MAILING LIST POPUP */
+        .mailing-list-popup {
+            position: absolute;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%) scale(0.95);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            background: #fff;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .social-wrapper:hover .mailing-list-popup {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) scale(1);
+            pointer-events: auto;
+        }
+        .popup-title {
+            font-family: "tomarik-brush", sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            color: #000;
+            display: inline-block;
+            margin-right: 20px;
+            vertical-align: middle;
+        }
+        .popup-form {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            vertical-align: middle;
+        }
+        .popup-form input {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            width: 200px;
+        }
+        .popup-form input:focus {
+            outline: none;
+            border-color: #000;
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+        }
+        .popup-form input::placeholder {
+            color: #aaa;
+        }
+        .popup-submit {
+            padding: 8px 16px;
+            background: #000;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-family: "tomarik-brush", sans-serif;
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .popup-submit:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
         /* MOBILE */
         @media (max-width: 768px) {
             .content-overlay { 
@@ -210,6 +280,32 @@
                 transform: none !important; 
                 margin-top: 20px;
                 margin-bottom: 20px;
+            }
+            .mailing-list-popup {
+                position: static !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                pointer-events: auto !important;
+                white-space: normal;
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+            .popup-title {
+                display: block;
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            .popup-form {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .popup-form input {
+                width: 100%;
             }
             .tagline { 
                 transform: translateY(0) !important; 
@@ -235,6 +331,20 @@
     <div class="main-container" id="mainContainer">
         <div class="content-overlay">
             <div class="social-wrapper" style="margin-bottom: 8vh; transform: translateY(-100px);">
+                <!-- MAILING LIST POPUP -->
+                <div class="mailing-list-popup">
+                    <h2 class="popup-title">updates in your inbox!</h2>
+                    <form class="popup-form" onsubmit="handleMailingListSubmit(event)">
+                        <input 
+                            type="email" 
+                            placeholder="Your email" 
+                            required 
+                            aria-label="Email address"
+                        >
+                        <button type="submit" class="popup-submit">Subscribe</button>
+                    </form>
+                </div>
+
                 <div class="social-dropdown">
                     <a href="https://www.linkedin.com/in/annacolliton" target="_blank" aria-label="Visit Anna's LinkedIn profile">
                         <img src="All Social Icons - Blobs-01.svg" alt="LinkedIn">
@@ -303,5 +413,30 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function handleMailingListSubmit(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const email = form.querySelector('input[type="email"]').value;
+            
+            // Replace this with your actual mailing list integration
+            // Examples: Mailchimp, ConvertKit, EmailOctopus, etc.
+            console.log('Email submitted:', email);
+            
+            // Show success message (optional)
+            alert('Thanks for subscribing! 🎉');
+            
+            // Clear the form
+            form.reset();
+        }
+
+        function closeSocialPopup() {
+            const popup = document.querySelector('.mailing-list-popup');
+            popup.style.opacity = '0';
+            popup.style.visibility = 'hidden';
+        }
+    </script>
 </body>
 </html>
