@@ -274,7 +274,14 @@
             top: 0 !important;
             left: 0 !important;
         }
+        body.popup-open .main-container {
+            position: fixed !important;
+            width: 100% !important;
+        }
         body.popup-open .content-overlay {
+            pointer-events: none;
+        }
+        body.popup-open .main-title {
             pointer-events: none;
         }
         body.popup-open .tagline {
@@ -285,6 +292,25 @@
         }
         body.popup-open .social-wrapper {
             pointer-events: none;
+        }
+        
+        /* White overlay backdrop */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.3);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        .popup-overlay.visible {
+            opacity: 1;
+            visibility: visible;
         }
         .popup-form {
             display: flex;
@@ -403,6 +429,9 @@
 </head>
 <body>
     <div class="main-container" id="mainContainer">
+        <!-- Popup Overlay -->
+        <div class="popup-overlay" id="popupOverlay"></div>
+        
         <div class="content-overlay">
             <div class="social-wrapper" style="margin-bottom: 8vh; transform: translateY(-100px);">
                 <div class="social-dropdown">
@@ -514,13 +543,17 @@
 
         function closeMailingListPopup() {
             const popup = document.getElementById('mailingListPopup');
+            const overlay = document.getElementById('popupOverlay');
             popup.classList.add('hidden');
+            overlay.classList.remove('visible');
             document.body.classList.remove('popup-open');
         }
 
         function openMailingListPopup() {
             const popup = document.getElementById('mailingListPopup');
+            const overlay = document.getElementById('popupOverlay');
             popup.classList.remove('hidden');
+            overlay.classList.add('visible');
             document.body.classList.add('popup-open');
         }
 
