@@ -218,8 +218,8 @@
             right: 0;
             bottom: 0;
             background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
             z-index: -1;
+            backdrop-filter: blur(5px);
         }
         .mailing-list-popup.hidden {
             opacity: 0;
@@ -228,14 +228,6 @@
         }
         .mailing-list-popup.hidden::before {
             display: none;
-        }
-        /* Blur content when popup is open */
-        body.popup-open .content-overlay {
-            filter: blur(4px);
-            pointer-events: none;
-        }
-        body.popup-open .main-container::before {
-            filter: blur(4px);
         }
         .popup-close {
             position: absolute;
