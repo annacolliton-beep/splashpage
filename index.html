@@ -197,44 +197,65 @@
 
         /* MAILING LIST POPUP */
         .mailing-list-popup {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             background: #000;
-            padding: 5px 20px;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-            white-space: nowrap;
-            order: 99;
-            min-height: 50px;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.3s ease;
+        }
+        .mailing-list-popup.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #fff;
+            transition: color 0.3s ease;
+            padding: 5px 10px;
+            line-height: 1;
+        }
+        .popup-close:hover {
+            color: #ccc;
         }
         .popup-title {
             font-family: "tomarik-brush", sans-serif;
-            font-size: 1rem;
+            font-size: 1.5rem;
             color: #fff;
-            display: flex;
-            align-items: center;
-            margin: 0;
+            display: block;
+            margin: 0 0 20px 0;
             white-space: nowrap;
-            height: 29px;
+            text-align: center;
         }
         .popup-form {
-            display: inline-flex;
-            gap: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
             align-items: center;
-            margin: 0;
         }
         .popup-form input {
-            padding: 6px 10px;
+            padding: 12px 15px;
             border: 1px solid #555;
-            border-radius: 4px;
+            border-radius: 6px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
-            width: 150px;
+            width: 280px;
             background: #fff;
             color: #000;
-            height: 29px;
             box-sizing: border-box;
         }
         .popup-form input:focus {
@@ -246,23 +267,20 @@
             color: #999;
         }
         .popup-submit {
-            padding: 0 12px;
+            padding: 10px 30px;
             background: #fff;
             color: #000;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             font-family: "tomarik-brush", sans-serif;
-            font-size: 1.2rem;
-            font-weight: bold;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            width: 29px;
-            height: 29px;
-            display: flex;
+            width: auto;
+            height: auto;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            box-sizing: border-box;
-            line-height: 1;
         }
         .popup-submit:hover {
             background: #ddd;
@@ -349,23 +367,27 @@
                     <a href="https://www.etsy.com/shop/LittleArsonAnnie" target="_blank" aria-label="Visit Anna's Etsy shop">
                         <img src="All Social Icons - Blobs-03.svg" alt="Shop">
                     </a>
-                    
-                    <!-- MAILING LIST POPUP -->
-                    <div class="mailing-list-popup">
-                        <h2 class="popup-title">get the news!</h2>
-                        <form class="popup-form" onsubmit="handleMailingListSubmit(event)">
-                            <input 
-                                type="email" 
-                                placeholder="your email" 
-                                required 
-                                aria-label="Email address"
-                            >
-                            <button type="submit" class="popup-submit">→</button>
-                        </form>
-                    </div>
+                    <a href="#" onclick="openMailingListPopup(); return false;" aria-label="Subscribe to mailing list" style="cursor: pointer;">
+                        <img src="All Social Icons - Blobs-01.svg" alt="Newsletter" style="opacity: 0.6;">
+                    </a>
                 </div>
 
                 <h1 class="main-title">ANNA COLLITON</h1>
+            </div>
+
+            <!-- MAILING LIST POPUP MODAL -->
+            <div class="mailing-list-popup hidden" id="mailingListPopup">
+                <button class="popup-close" onclick="closeMailingListPopup()">×</button>
+                <h2 class="popup-title">get the news!</h2>
+                <form class="popup-form" onsubmit="handleMailingListSubmit(event)">
+                    <input 
+                        type="email" 
+                        placeholder="your email" 
+                        required 
+                        aria-label="Email address"
+                    >
+                    <button type="submit" class="popup-submit">Subscribe</button>
+                </form>
             </div>
 
             <!-- TAGLINE / NAV -->
@@ -433,13 +455,28 @@
             
             // Clear the form
             form.reset();
+            
+            // Close the popup
+            closeMailingListPopup();
         }
 
-        function closeSocialPopup() {
-            const popup = document.querySelector('.mailing-list-popup');
-            popup.style.opacity = '0';
-            popup.style.visibility = 'hidden';
+        function closeMailingListPopup() {
+            const popup = document.getElementById('mailingListPopup');
+            popup.classList.add('hidden');
         }
+
+        function openMailingListPopup() {
+            const popup = document.getElementById('mailingListPopup');
+            popup.classList.remove('hidden');
+        }
+
+        // Close popup when clicking outside of it
+        document.addEventListener('click', function(event) {
+            const popup = document.getElementById('mailingListPopup');
+            if (!popup.contains(event.target) && !event.target.closest('.social-wrapper')) {
+                popup.classList.add('hidden');
+            }
+        });
     </script>
 </body>
 </html>
