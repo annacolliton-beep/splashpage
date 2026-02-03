@@ -320,6 +320,25 @@
             .content-overlay { 
                 padding: 20px;
             }
+            .main-container {
+                background-color: #FFFEF9 !important;
+            }
+            .main-title {
+                color: #000 !important;
+            }
+            .tagline-section a {
+                color: #000 !important;
+            }
+            .tagline-divider {
+                color: #333 !important;
+            }
+            .social-dropdown img {
+                filter: none !important;
+                opacity: 1 !important;
+            }
+            .shop-arrow {
+                border-left-color: #000 !important;
+            }
             .social-wrapper {
                 margin-bottom: 30px !important;
                 transform: translateY(0) !important;
@@ -337,8 +356,8 @@
                 top: 30% !important;
                 left: 50% !important;
                 transform: translate(-50%, -50%) !important;
-                opacity: 1;
-                visibility: visible;
+                opacity: 1 !important;
+                visibility: visible !important;
                 pointer-events: auto;
                 width: 90%;
                 max-width: 400px;
@@ -639,11 +658,9 @@
             document.body.classList.add('popup-open');
         }
 
-        // Auto-open popup after 3 seconds
+        // Auto-open popup immediately on page load
         window.addEventListener('load', function() {
-            setTimeout(function() {
-                openMailingListPopup();
-            }, 3000);
+            openMailingListPopup();
         });
 
         // Close popup when clicking the X button only
