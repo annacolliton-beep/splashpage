@@ -198,22 +198,25 @@
         /* MAILING LIST POPUP */
         .mailing-list-popup {
             position: fixed;
-            top: 30%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #000000;
+            bottom: 40px;
+            right: 40px;
+            transform: translateX(0);
+            background: #000;
             padding: 40px 50px;
             border-radius: 12px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
             z-index: 1001;
             opacity: 1;
             visibility: visible;
-            transition: all 0.3s ease;
+            transition: all 0.8s ease;
+            top: auto;
+            left: auto;
         }
         .mailing-list-popup.hidden {
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
+            transform: translateX(600px);
         }
         .popup-close {
             position: absolute;
@@ -280,24 +283,6 @@
             pointer-events: none;
         }
         
-        /* White overlay backdrop */
-        .popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.6);
-            z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            pointer-events: none;
-        }
-        .popup-overlay.visible {
-            opacity: 1;
-            visibility: visible;
-        }
         .popup-form {
             display: flex;
             flex-direction: column;
@@ -415,9 +400,6 @@
 </head>
 <body>
     <div class="main-container" id="mainContainer">
-        <!-- Popup Overlay -->
-        <div class="popup-overlay" id="popupOverlay"></div>
-        
         <div class="content-overlay">
             <div class="social-wrapper" style="margin-bottom: 8vh; transform: translateY(-100px);">
                 <div class="social-dropdown">
@@ -529,17 +511,13 @@
 
         function closeMailingListPopup() {
             const popup = document.getElementById('mailingListPopup');
-            const overlay = document.getElementById('popupOverlay');
             popup.classList.add('hidden');
-            overlay.classList.remove('visible');
             document.body.classList.remove('popup-open');
         }
 
         function openMailingListPopup() {
             const popup = document.getElementById('mailingListPopup');
-            const overlay = document.getElementById('popupOverlay');
             popup.classList.remove('hidden');
-            overlay.classList.add('visible');
             document.body.classList.add('popup-open');
         }
 
