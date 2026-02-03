@@ -571,7 +571,11 @@
         // Close popup when clicking outside of it
         document.addEventListener('click', function(event) {
             const popup = document.getElementById('mailingListPopup');
-            if (!popup.contains(event.target) && !event.target.closest('.social-wrapper')) {
+            const isClickInsidePopup = popup.contains(event.target);
+            const isClickOnSocialIcon = event.target.closest('.social-wrapper');
+            
+            // Only close if clicking outside the popup AND not on social icons
+            if (!isClickInsidePopup && !isClickOnSocialIcon) {
                 closeMailingListPopup();
             }
         });
