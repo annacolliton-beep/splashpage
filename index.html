@@ -470,6 +470,13 @@
             popup.classList.remove('hidden');
         }
 
+        // Auto-open popup after 4 seconds
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                openMailingListPopup();
+            }, 4000);
+        });
+
         // Close popup when clicking outside of it
         document.addEventListener('click', function(event) {
             const popup = document.getElementById('mailingListPopup');
