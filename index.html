@@ -557,14 +557,6 @@
 
         // Create a zone that includes the header, buttons, and social icons
         const interactiveZone = document.querySelector('.content-overlay');
-        const socialWrapper = document.querySelector('.social-wrapper');
-        const taglineDiv = document.querySelector('.tagline');
-        
-        // Create an invisible container that spans all three elements
-        const zone = document.createElement('div');
-        zone.style.position = 'absolute';
-        zone.style.pointerEvents = 'auto';
-        zone.style.zIndex = '5';
         
         interactiveZone.addEventListener('mouseleave', (e) => {
             // Only reset if we're truly leaving the zone area AND haven't hovered menu yet
