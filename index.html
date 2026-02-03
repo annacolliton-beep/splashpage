@@ -510,22 +510,16 @@
             const mainContainer = document.querySelector('.main-container');
             mainContainer.style.backgroundColor = color;
             
-            // Add background image for Music (green) - image above with 40% opacity on normal
+            // Add background image for Music (green) - overlay blend to show both green and photo
             if (color === colors.music) {
                 mainContainer.style.backgroundImage = "url('Anna-Colliton-2.jpg')";
                 mainContainer.style.backgroundSize = 'cover';
                 mainContainer.style.backgroundPosition = 'center';
-                mainContainer.style.backgroundBlendMode = 'normal';
+                mainContainer.style.backgroundBlendMode = 'overlay';
                 mainContainer.style.opacity = '1';
-                // Set the pseudo-element opacity for the overlay effect
-                const overlay = mainContainer.querySelector('::before');
-                if (overlay) {
-                    overlay.style.opacity = '0.4';
-                }
             } else {
                 mainContainer.style.backgroundImage = 'none';
                 mainContainer.style.backgroundBlendMode = 'normal';
-                mainContainer.style.opacity = '1';
             }
             
             // Change all text to cream when background is colored
