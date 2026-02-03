@@ -492,9 +492,7 @@
     </div>
 
     <script>
-        const MAILCHIMP_API_KEY = '91cc23856a4bfea1a178eb4432e24e18-us12';
-        const MAILCHIMP_AUDIENCE_ID = '9cb5dfe3c7';
-        const MAILCHIMP_SERVER = 'us12';
+        const FORMSPREE_ID = 'xeeznykn';
 
         function handleMailingListSubmit(event) {
             event.preventDefault();
@@ -507,36 +505,31 @@
             submitButton.disabled = true;
             submitButton.textContent = 'Subscribing...';
             
-            // Send to Mailchimp
-            addToMailchimp(email, submitButton, form);
+            // Send to Formspree
+            addToFormspree(email, submitButton, form);
         }
 
-        function addToMailchimp(email, submitButton, form) {
-            // Mailchimp API endpoint
-            const url = `https://${MAILCHIMP_SERVER}.api.mailchimp.com/3.0/lists/${MAILCHIMP_AUDIENCE_ID}/members`;
+        function addToFormspree(email, submitButton, form) {
+            const url = `https://formspree.io/f/${FORMSPREE_ID}`;
             
             const data = {
-                email_address: email,
-                status: 'subscribed'
+                email: email,
+                message: 'New subscriber from Anna Colliton website'
             };
             
             fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Authorization': 'Basic ' + btoa('anystring:' + MAILCHIMP_API_KEY),
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
             })
             .then(response => response.json())
             .then(data => {
-                if (data.id || data.status === 'subscribed') {
+                if (data.ok) {
                     // Success!
                     alert('Thanks for subscribing! 🎉');
                     form.reset();
-                    closeMailingListPopup();
-                } else if (data.title === 'Member Exists') {
-                    alert('You\'re already subscribed!');
                     closeMailingListPopup();
                 } else {
                     alert('Something went wrong. Please try again.');
@@ -571,17 +564,8 @@
             }, 3000);
         });
 
-        // Close popup when clicking outside of it
-        document.addEventListener('click', function(event) {
-            const popup = document.getElementById('mailingListPopup');
-            const isClickInsidePopup = popup.contains(event.target);
-            const isClickOnSocialIcon = event.target.closest('.social-wrapper');
-            
-            // Only close if clicking outside the popup AND not on social icons
-            if (!isClickInsidePopup && !isClickOnSocialIcon) {
-                closeMailingListPopup();
-            }
-        });
+        // Close popup when clicking the X button only
+        // Removed click-outside-to-close to prevent accidental closing while typing
     </script>
 </body>
 </html>
