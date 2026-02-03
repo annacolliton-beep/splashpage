@@ -201,19 +201,33 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: #000;
-            padding: 30px 40px;
+            background: #fff;
+            padding: 40px 50px;
             border-radius: 12px;
-            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            z-index: 1001;
             opacity: 1;
             visibility: visible;
             transition: all 0.3s ease;
+        }
+        .mailing-list-popup::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: -1;
         }
         .mailing-list-popup.hidden {
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
+        }
+        .mailing-list-popup.hidden::before {
+            display: none;
         }
         .popup-close {
             position: absolute;
@@ -223,18 +237,18 @@
             border: none;
             font-size: 2rem;
             cursor: pointer;
-            color: #fff;
+            color: #000;
             transition: color 0.3s ease;
             padding: 5px 10px;
             line-height: 1;
         }
         .popup-close:hover {
-            color: #ccc;
+            color: #666;
         }
         .popup-title {
             font-family: "tomarik-brush", sans-serif;
-            font-size: 1.5rem;
-            color: #fff;
+            font-size: 1.8rem;
+            color: #000;
             display: block;
             margin: 0 0 20px 0;
             white-space: nowrap;
@@ -243,37 +257,37 @@
         .popup-form {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 15px;
             align-items: center;
         }
         .popup-form input {
             padding: 12px 15px;
-            border: 1px solid #555;
+            border: 1px solid #ddd;
             border-radius: 6px;
             font-family: 'Montserrat', sans-serif;
             font-size: 0.95rem;
             transition: all 0.3s ease;
-            width: 280px;
+            width: 300px;
             background: #fff;
             color: #000;
             box-sizing: border-box;
         }
         .popup-form input:focus {
             outline: none;
-            border-color: #fff;
-            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+            border-color: #000;
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
         }
         .popup-form input::placeholder {
             color: #999;
         }
         .popup-submit {
-            padding: 10px 30px;
-            background: #fff;
-            color: #000;
+            padding: 12px 40px;
+            background: #000;
+            color: #fff;
             border: none;
             border-radius: 6px;
             font-family: "tomarik-brush", sans-serif;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             cursor: pointer;
             transition: all 0.3s ease;
             width: auto;
@@ -283,7 +297,7 @@
             justify-content: center;
         }
         .popup-submit:hover {
-            background: #ddd;
+            background: #333;
             transform: translateY(-2px);
         }
 
@@ -352,11 +366,11 @@
         <div class="content-overlay">
             <div class="social-wrapper" style="margin-bottom: 8vh; transform: translateY(-100px);">
                 <div class="social-dropdown">
-                    <a href="https://www.linkedin.com/in/annacolliton" target="_blank" aria-label="Visit Anna's LinkedIn profile">
-                        <img src="All Social Icons - Blobs-01.svg" alt="LinkedIn">
-                    </a>
                     <a href="https://www.tiktok.com/@anna.colliton" target="_blank" aria-label="Visit Anna's TikTok profile">
                         <img src="All Social Icons - Blobs-04.svg" alt="TikTok">
+                    </a>
+                    <a href="https://www.linkedin.com/in/annacolliton" target="_blank" aria-label="Visit Anna's LinkedIn profile">
+                        <img src="All Social Icons - Blobs-01.svg" alt="LinkedIn">
                     </a>
                     <a href="https://www.instagram.com/annacolliton/" target="_blank" aria-label="Visit Anna's Instagram profile">
                         <img src="All Social Icons - Blobs-05.svg" alt="Instagram">
@@ -366,9 +380,6 @@
                     </a>
                     <a href="https://www.etsy.com/shop/LittleArsonAnnie" target="_blank" aria-label="Visit Anna's Etsy shop">
                         <img src="All Social Icons - Blobs-03.svg" alt="Shop">
-                    </a>
-                    <a href="#" onclick="openMailingListPopup(); return false;" aria-label="Subscribe to mailing list" style="cursor: pointer;">
-                        <img src="All Social Icons - Blobs-01.svg" alt="Newsletter" style="opacity: 0.6;">
                     </a>
                 </div>
 
@@ -470,11 +481,11 @@
             popup.classList.remove('hidden');
         }
 
-        // Auto-open popup after 4 seconds
+        // Auto-open popup after 3 seconds
         window.addEventListener('load', function() {
             setTimeout(function() {
                 openMailingListPopup();
-            }, 4000);
+            }, 3000);
         });
 
         // Close popup when clicking outside of it
