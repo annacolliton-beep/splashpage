@@ -33,8 +33,11 @@
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             background: transparent;
+            background-size: cover;
+            background-position: center;
             transition: background 0.3s ease;
             opacity: 0.2;
+            pointer-events: none;
         }
 
         /* CONTENT */
@@ -574,7 +577,11 @@
         function applyColorChange(color, bgImage) {
             const mainContainer = document.querySelector('.main-container');
             mainContainer.style.backgroundColor = color;
-            mainContainer.style.backgroundImage = `url('${bgImage}')`;
+            
+            // Apply background image to the ::before element via CSS
+            const style = document.createElement('style');
+            style.textContent = `.main-container::before { background-image: url('${bgImage}') !important; }`;
+            document.head.appendChild(style);
             
             // Change all text to cream when background is colored
             document.querySelector('.main-title').style.color = creamColor;
@@ -602,7 +609,12 @@
             if (!hasHoveredMenu) {
                 const mainContainer = document.querySelector('.main-container');
                 mainContainer.style.backgroundColor = defaultBG;
-                mainContainer.style.backgroundImage = 'none';
+                
+                // Clear background image from ::before element
+                const style = document.createElement('style');
+                style.textContent = `.main-container::before { background-image: none !important; }`;
+                document.head.appendChild(style);
+                
                 document.querySelector('.main-title').style.color = blackColor;
                 // Reset dividers to default
                 document.querySelectorAll('.tagline-divider').forEach(divider => {
