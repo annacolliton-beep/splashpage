@@ -26,7 +26,7 @@
             background-size: cover;
             background-position: center;
             background-color: #FFFEF9;
-            transition: background-color 0.5s ease;
+            transition: background-color 0.5s ease, background-image 0.5s ease;
         }
         .main-container::before {
             content: '';
@@ -34,6 +34,7 @@
             top: 0; left: 0; right: 0; bottom: 0;
             background: transparent;
             transition: background 0.3s ease;
+            opacity: 0.2;
         }
 
         /* CONTENT */
@@ -508,7 +509,7 @@
 
                 <!-- SHOP -->
                 <div class="tagline-section">
-                    <a href="https://www.etsy.com/shop/LittleArsonAnnie" target="_blank" style="text-decoration: none; color: inherit;">
+                    <a href="https://annacollitonshop.weebly.com" target="_blank" style="text-decoration: none; color: inherit;">
                         <span class="shop-button-text">
                             <span>STRAIGHT</span>
                             <span class="small-stack">
@@ -533,6 +534,13 @@
             shop: '#8B2F0A'        // Deeper rich dark orange
         };
 
+        // Background image URLs from GitHub
+        const bgImages = {
+            music: 'https://raw.githubusercontent.com/annacolliton-beep/splashpage/main/MUSIC%20Splash%20Page%20BGs%202026-01.png',
+            art: 'https://raw.githubusercontent.com/annacolliton-beep/splashpage/main/SHOP%20Splash%20Page%20BGs%202026-03.png',
+            shop: 'https://raw.githubusercontent.com/annacolliton-beep/splashpage/main/SHOP%20Splash%20Page%20BGs%202026-02.png'
+        };
+
         // Add hover listeners to tagline sections
         const taglineSections = document.querySelectorAll('.tagline-section');
         const taglineContainer = document.querySelector('.tagline');
@@ -541,25 +549,32 @@
         const creamColor = '#FFFEF9';
         const blackColor = '#000';
         let currentColor = defaultBG;
+        let currentBG = '';
         let hasHoveredMenu = false;
 
         taglineSections.forEach((section, index) => {
             section.addEventListener('mouseenter', () => {
                 hasHoveredMenu = true;
+                const mainContainer = document.querySelector('.main-container');
+                
                 if (index === 0) { // Music
                     currentColor = colors.music;
+                    currentBG = bgImages.music;
                 } else if (index === 1) { // Art + Design
                     currentColor = colors.art;
+                    currentBG = bgImages.art;
                 } else if (index === 2) { // Shop
                     currentColor = colors.shop;
+                    currentBG = bgImages.shop;
                 }
-                applyColorChange(currentColor);
+                applyColorChange(currentColor, currentBG);
             });
         });
 
-        function applyColorChange(color) {
+        function applyColorChange(color, bgImage) {
             const mainContainer = document.querySelector('.main-container');
             mainContainer.style.backgroundColor = color;
+            mainContainer.style.backgroundImage = `url('${bgImage}')`;
             
             // Change all text to cream when background is colored
             document.querySelector('.main-title').style.color = creamColor;
@@ -587,6 +602,7 @@
             if (!hasHoveredMenu) {
                 const mainContainer = document.querySelector('.main-container');
                 mainContainer.style.backgroundColor = defaultBG;
+                mainContainer.style.backgroundImage = 'none';
                 document.querySelector('.main-title').style.color = blackColor;
                 // Reset dividers to default
                 document.querySelectorAll('.tagline-divider').forEach(divider => {
@@ -606,6 +622,7 @@
                     arrow.style.borderLeftColor = '';
                 });
                 currentColor = defaultBG;
+                currentBG = '';
             }
         }
 
